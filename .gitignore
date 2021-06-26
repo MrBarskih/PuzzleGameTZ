@@ -7,3 +7,4 @@ Assembly-CSharp.csproj
 *.meta
 
 PuzzleGameTZ.sln
+.vsconfig
