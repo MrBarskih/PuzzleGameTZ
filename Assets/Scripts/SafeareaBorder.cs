@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class SafeareaBorder : MonoBehaviour
 {
+    //Calculate the safearea of a phone
     private void Awake()
     {
         var rectTransform = gameObject.GetComponent<RectTransform>();
@@ -17,8 +18,6 @@ public class SafeareaBorder : MonoBehaviour
 
         rectTransform.anchorMin = anchorMin;
         rectTransform.anchorMax = anchorMax;
-
-        var a = Input.deviceOrientation;
     }
 
 }
