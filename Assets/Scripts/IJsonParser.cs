@@ -1,5 +1,7 @@
+using System.Collections.Generic;
+
 public interface IJsonParser
 {
     public bool[,] GetTemplate();
-    public int[] GetParts(); 
+    public List<bool[,]> GetParts(); 
 }

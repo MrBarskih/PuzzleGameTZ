@@ -15,10 +15,16 @@ public class JsonParser : IJsonParser
         jObject = JObject.Parse(File.ReadAllText($"Assets/Levels/{level}.json"));
     }
 
-    public int[] GetParts()
+    public List<bool[,]> GetParts()
     {
-        int[] a = new int[1];
-        return a;
+        List<bool[,]> result = new List<bool[,]>();
+
+        foreach (JToken value in jObject.GetValue("parts"))
+        {
+            result.Add(value.ToObject<bool[,]>());
+        }
+
+        return result;
     }
 
     public bool[,] GetTemplate()
