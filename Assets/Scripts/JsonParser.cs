@@ -12,7 +12,8 @@ public class JsonParser : IJsonParser
 
     public JsonParser(string level)
     {
-        jObject = JObject.Parse(File.ReadAllText($"Assets/Levels/{level}.json"));
+        TextAsset file = Resources.Load($"{level}") as TextAsset;
+        jObject = JObject.Parse(file.ToString());
     }
 
     public List<bool[,]> GetParts()

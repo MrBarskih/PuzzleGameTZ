@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1395f9282026b49be4527cd46a5847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleTile: {fileID: 0}
+  puzzleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
 --- !u!1 &778818051
 GameObject:
   m_ObjectHideFlags: 0

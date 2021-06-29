@@ -11,6 +11,7 @@ public class FigureConstractor : MonoBehaviour
     [SerializeField]
     private GameObject puzzleTile;
     private GameObject[] puzzleContainers;
+
     private void Awake()
     {
         puzzleContainers = GameObject.FindGameObjectsWithTag("PartContainer");
