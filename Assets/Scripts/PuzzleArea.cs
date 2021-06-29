@@ -29,8 +29,7 @@ public class PuzzleArea : MonoBehaviour
     {
         foreach(bool i in template)
         {
-            var currentTile = Instantiate(tile, gameObject.transform).GetComponent<Tile>();
-            currentTile.IsPartOfTemplate = i;      
+            var currentTile = Instantiate(tile, gameObject.transform).AddComponent<TemplateTile>();
         }
     }
 }
