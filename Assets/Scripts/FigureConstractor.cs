@@ -7,19 +7,15 @@ public class FigureConstractor : MonoBehaviour
 {
     private IJsonParser jsonParser;
 
-    private List<bool[,]> puzzleParts;
     [SerializeField]
     private GameObject puzzleTile;
+    private List<bool[,]> puzzleParts;
     private GameObject[] puzzleContainers;
 
     private void Awake()
     {
         puzzleContainers = GameObject.FindGameObjectsWithTag("PartContainer");
         jsonParser = Factory.CreateJsonParser("Level1");
-    }
-
-    void Start()
-    {
         puzzleParts = jsonParser.GetParts();
 
         for (int i = 0; i < puzzleParts.Count; i++)
@@ -43,6 +39,7 @@ public class FigureConstractor : MonoBehaviour
                 if (figureInRectangle[i, j])
                 {
                     var tile = Instantiate(puzzleTile, partBody.transform);
+                    tile.AddComponent<PartTile>();
                     var tileRectTransform = tile.GetComponent<RectTransform>();
                     tileRectTransform.anchoredPosition = new Vector2(50 + (100 * j), -50 - (100 * i));
                     tileRectTransform.anchorMin = new Vector2(0, 1);
@@ -99,10 +96,13 @@ public class FigureConstractor : MonoBehaviour
     //instantiate paryBody gameobject where we put figure tiles
     private GameObject createPartBody(GameObject partContainer, bool[,] figureInRectangle)
     {
+        Vector2 sizeFirgure = new Vector2(figureInRectangle.GetLength(1) * 100, figureInRectangle.GetLength(0) * 100);
         GameObject partBody = Instantiate(new GameObject("partBody"), partContainer.transform);
-        var rectTransformOfPartBody = partBody.AddComponent<RectTransform>();
-        rectTransformOfPartBody.anchoredPosition = new Vector2(0, 0);
-        rectTransformOfPartBody.sizeDelta = new Vector2(figureInRectangle.GetLength(1) * 100, figureInRectangle.GetLength(0) * 100);
+        partBody.AddComponent<PartBody>();
+
+        partBody.GetComponent<RectTransform>().sizeDelta = sizeFirgure;
+        partBody.GetComponent<BoxCollider2D>().size = sizeFirgure;
+
         return partBody;
     }
 }
