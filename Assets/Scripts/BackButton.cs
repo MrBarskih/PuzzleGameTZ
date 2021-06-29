@@ -12,10 +12,4 @@ public class BackButton : MonoBehaviour
     {
         backButton.onClick.AddListener(() => SceneManager.LoadScene($"{AllScenes.StartScene}"));
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

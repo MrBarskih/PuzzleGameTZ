@@ -19,12 +19,6 @@ public class PuzzleArea : MonoBehaviour
         CreatePuzzleArea(template);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void CreatePuzzleArea(bool[,] template) 
     {
         foreach(bool i in template)

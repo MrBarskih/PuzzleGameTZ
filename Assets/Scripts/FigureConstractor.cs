@@ -20,17 +20,17 @@ public class FigureConstractor : MonoBehaviour
 
         for (int i = 0; i < puzzleParts.Count; i++)
         {
-            createFigure(puzzleParts[i], puzzleContainers[i]);
+            CreateFigure(puzzleParts[i], puzzleContainers[i]);
         }
     }
 
 
-    private void createFigure(bool[,] templateOfFugure, GameObject partContainer)
+    private void CreateFigure(bool[,] templateOfFugure, GameObject partContainer)
     {
 
-        var figureInRectangle = getFigureInRectangleFromTemplate(templateOfFugure);
+        var figureInRectangle = GetFigureInRectangleFromTemplate(templateOfFugure);
 
-        var partBody = createPartBody(partContainer, figureInRectangle);
+        var partBody = CreatePartBody(partContainer, figureInRectangle);
 
         for (int i = 0; i < figureInRectangle.GetLength(0); i++)
         {
@@ -50,7 +50,7 @@ public class FigureConstractor : MonoBehaviour
 
     }
     //Generate small massive to create figure
-    private bool[,] getFigureInRectangleFromTemplate(bool[,] templateOfFugure)
+    private bool[,] GetFigureInRectangleFromTemplate(bool[,] templateOfFugure)
     {
         int leftmost = 3;
         int rightmost = 0;
@@ -94,7 +94,7 @@ public class FigureConstractor : MonoBehaviour
     }
 
     //instantiate paryBody gameobject where we put figure tiles
-    private GameObject createPartBody(GameObject partContainer, bool[,] figureInRectangle)
+    private GameObject CreatePartBody(GameObject partContainer, bool[,] figureInRectangle)
     {
         Vector2 sizeFirgure = new Vector2(figureInRectangle.GetLength(1) * 100, figureInRectangle.GetLength(0) * 100);
         GameObject partBody = Instantiate(new GameObject("partBody"), partContainer.transform);

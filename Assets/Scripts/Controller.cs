@@ -6,12 +6,7 @@ public class Controller : MonoBehaviour
 {
     private GameObject target = null;
     private bool isHeld;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         //touch
