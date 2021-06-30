@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SafeareaBorder : MonoBehaviour
+public class ScreenManager : MonoBehaviour
 {
     //Calculate the safearea of a phone
     private void Awake()
