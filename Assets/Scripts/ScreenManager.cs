@@ -3,25 +3,35 @@ using UnityEngine.UI;
 
 public class ScreenManager : MonoBehaviour
 {
-    private ScreenOrientation curentOrientation;
+    private ScreenOrientation currentOrientation;
     private RectTransform safeAreaPanelRectTransform;
+    private Vector2 anchorMin;
+    private Vector2 anchorMax;
 
     private void Awake()
     {
-        curentOrientation = Screen.orientation;
+        currentOrientation = Screen.orientation;
         safeAreaPanelRectTransform = gameObject.GetComponent<RectTransform>();
 
-        var safeArea = Screen.safeArea;
-        var anchorMin = safeArea.position;
-        var anchorMax = anchorMin + safeArea.size;
+        if (currentOrientation == ScreenOrientation.Portrait)
+        {
+            anchorMin = Screen.safeArea.position;
+            anchorMax = anchorMin + Screen.safeArea.size;
 
-        anchorMin.x /= Screen.width;
-        anchorMin.y /= Screen.height;
-        anchorMax.x /= Screen.width;
-        anchorMax.y /= Screen.height;
+            anchorMin.x /= Screen.width;
+            anchorMin.y /= Screen.height;
+            anchorMax.x /= Screen.width;
+            anchorMax.y /= Screen.height;
 
-        safeAreaPanelRectTransform.anchorMin = anchorMin;
-        safeAreaPanelRectTransform.anchorMax = anchorMax;
+            safeAreaPanelRectTransform.anchorMin = anchorMin;
+            safeAreaPanelRectTransform.anchorMax = anchorMax;
+        }
+        else if (currentOrientation == ScreenOrientation.Landscape)
+        {
+
+        }
+
+        
     }
 
 }
