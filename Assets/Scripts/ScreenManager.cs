@@ -3,10 +3,14 @@ using UnityEngine.UI;
 
 public class ScreenManager : MonoBehaviour
 {
-    //Calculate the safearea of a phone
+    private ScreenOrientation curentOrientation;
+    private RectTransform safeAreaPanelRectTransform;
+
     private void Awake()
     {
-        var rectTransform = gameObject.GetComponent<RectTransform>();
+        curentOrientation = Screen.orientation;
+        safeAreaPanelRectTransform = gameObject.GetComponent<RectTransform>();
+
         var safeArea = Screen.safeArea;
         var anchorMin = safeArea.position;
         var anchorMax = anchorMin + safeArea.size;
@@ -16,8 +20,8 @@ public class ScreenManager : MonoBehaviour
         anchorMax.x /= Screen.width;
         anchorMax.y /= Screen.height;
 
-        rectTransform.anchorMin = anchorMin;
-        rectTransform.anchorMax = anchorMax;
+        safeAreaPanelRectTransform.anchorMin = anchorMin;
+        safeAreaPanelRectTransform.anchorMax = anchorMax;
     }
 
 }
