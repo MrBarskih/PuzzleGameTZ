@@ -4,9 +4,6 @@
 .vs
 Assembly-CSharp.csproj
 /obj
-*.prefab
-*.meta
-*.unity
 PuzzleGameTZ.sln
 .vsconfig
-*.asset
+
