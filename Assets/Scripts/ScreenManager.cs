@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,19 @@ public class ScreenManager : MonoBehaviour
     private RectTransform safeAreaPanelRectTransform;
     private Vector2 anchorMin;
     private Vector2 anchorMax;
+    private Dictionary<string, RectTransform> safeAreaElements = 
+        new Dictionary<string, RectTransform>(); 
 
     private void Awake()
     {
         currentOrientation = Screen.orientation;
         safeAreaPanelRectTransform = gameObject.GetComponent<RectTransform>();
+
+        //Find all objects on scene with tag "SafeAreaElement"
+            foreach (RectTransform child in transform)
+            {
+                safeAreaElements.Add(child.name, child.GetComponent<RectTransform>());
+            }
 
         if (currentOrientation == ScreenOrientation.Portrait)
         {
