@@ -6,4 +6,4 @@ Assembly-CSharp.csproj
 /obj
 PuzzleGameTZ.sln
 .vsconfig
-
+*.meta
