@@ -8,6 +8,7 @@ TagManager:
   - PartContainer
   - PartBody
   - PartTile
+  - SafeAreaElement
   layers:
   - Default
   - TransparentFX

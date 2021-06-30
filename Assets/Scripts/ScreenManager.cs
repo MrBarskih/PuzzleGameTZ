@@ -22,25 +22,35 @@ public class ScreenManager : MonoBehaviour
                 safeAreaElements.Add(child.name, child.GetComponent<RectTransform>());
             }
 
+        //if the app starts from landscape orientation make refactoring our elements
         if (currentOrientation == ScreenOrientation.Portrait)
         {
-            anchorMin = Screen.safeArea.position;
-            anchorMax = anchorMin + Screen.safeArea.size;
-
-            anchorMin.x /= Screen.width;
-            anchorMin.y /= Screen.height;
-            anchorMax.x /= Screen.width;
-            anchorMax.y /= Screen.height;
-
-            safeAreaPanelRectTransform.anchorMin = anchorMin;
-            safeAreaPanelRectTransform.anchorMax = anchorMax;
+            BuildPortraitUI();
         }
         else if (currentOrientation == ScreenOrientation.Landscape)
         {
-
+            BuildLandscapeUI();
         }
 
         
     }
 
+    private void BuildPortraitUI()
+    {
+        anchorMin = Screen.safeArea.position;
+        anchorMax = anchorMin + Screen.safeArea.size;
+
+        anchorMin.x /= Screen.width;
+        anchorMin.y /= Screen.height;
+        anchorMax.x /= Screen.width;
+        anchorMax.y /= Screen.height;
+
+        safeAreaPanelRectTransform.anchorMin = anchorMin;
+        safeAreaPanelRectTransform.anchorMax = anchorMax;
+    }
+
+    private void BuildLandscapeUI()
+    {
+
+    }
 }
