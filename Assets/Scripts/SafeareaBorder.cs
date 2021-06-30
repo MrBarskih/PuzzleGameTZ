@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SafeareaBorder : MonoBehaviour
 {
     private GameObject mainCanvas;
+    private ScreenOrientation currentScreeOrientation;
 
     private Dictionary<string, RectTransform> safeAreaElements =
         new Dictionary<string, RectTransform>();
@@ -23,6 +24,15 @@ public class SafeareaBorder : MonoBehaviour
         safeAreaElements["MainContent"].anchorMax = new Vector2
             (safeAreaElements["MainContent"].anchorMax.x,
             1 - (safeAreaElements["Header"].rect.height * mainCanvas.transform.localScale.y / Screen.height));
+
+        if (Screen.orientation == ScreenOrientation.Landscape)
+        { 
+        
+        }
+        else if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.Portrait)
+        {
+
+        }
 
         CalculateSafeAreaBorders();
     }
