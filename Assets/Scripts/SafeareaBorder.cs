@@ -4,49 +4,28 @@ using UnityEngine.UI;
 
 public class SafeareaBorder : MonoBehaviour
 {
-    private GameObject mainCanvas;
-    private ScreenOrientation currentScreeOrientation;
+    private ScreenOrientation currentScreenOrientation;
 
-    private Dictionary<string, RectTransform> safeAreaElements =
-        new Dictionary<string, RectTransform>();
-
-    private void Awake()
+    void Update()
     {
-        mainCanvas = GameObject.FindGameObjectWithTag("Canvas");
-
-        foreach (GameObject item in GameObject.FindGameObjectsWithTag("SafeAreaElement"))
+        if (Screen.orientation != currentScreenOrientation)
         {
-            safeAreaElements.Add(item.transform.name, item.GetComponent<RectTransform>());
-        }
-    }
-    private void Start()
-    {
-        safeAreaElements["MainContent"].anchorMax = new Vector2
-            (safeAreaElements["MainContent"].anchorMax.x,
-            1 - (safeAreaElements["Header"].rect.height * mainCanvas.transform.localScale.y / Screen.height));
-
-        if (Screen.orientation == ScreenOrientation.Landscape)
-        { 
-        
-        }
-        else if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.Portrait)
-        {
-
+            currentScreenOrientation = Screen.orientation;
+            CalculateSafeAreaBorders();
         }
 
-        CalculateSafeAreaBorders();
     }
 
-    private void CalculateSafeAreaBorders()
+    public void CalculateSafeAreaBorders()
     {
         var safeAreaRectTransform = gameObject.GetComponent<RectTransform>();
         var anchorMin = Screen.safeArea.position;
         var anchorMax = anchorMin + Screen.safeArea.size;
 
-        anchorMin.x /= Screen.width;
-        anchorMin.y /= Screen.height;
-        anchorMax.x /= Screen.width;
-        anchorMax.y /= Screen.height;
+        anchorMin.x /= Screen.currentResolution.width;
+        anchorMin.y /= Screen.currentResolution.height;
+        anchorMax.x /= Screen.currentResolution.width;
+        anchorMax.y /= Screen.currentResolution.height;
 
         safeAreaRectTransform.anchorMin = anchorMin;
         safeAreaRectTransform.anchorMax = anchorMax;
