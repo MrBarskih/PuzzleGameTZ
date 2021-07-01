@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class InterfaceBuilder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    private ScreenOrientation currentScreenOrientation;
     void Update()
     {
-        
+        if (Screen.orientation != currentScreenOrientation)
+        {
+            currentScreenOrientation = Screen.orientation;
+
+            if (Screen.orientation == ScreenOrientation.Landscape)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }
