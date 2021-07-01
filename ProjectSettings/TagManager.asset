@@ -9,6 +9,7 @@ TagManager:
   - PartBody
   - PartTile
   - SafeAreaElement
+  - Canvas
   layers:
   - Default
   - TransparentFX
