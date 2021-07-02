@@ -10,16 +10,16 @@ public class PuzzleArea : MonoBehaviour
     private bool[,] template;
     void Awake()
     {
-        IJsonParser jsonParser = Factory.CreateJsonParser("Level1");
+        IJsonParser jsonParser = Factory.CreateJsonParser("Level2");
         template = jsonParser.GetTemplate();
     }
 
     private void Start()
     {
-        CreatePuzzleArea(template);
+        FillPuzzleAreaFromTemplate(template);
     }
 
-    private void CreatePuzzleArea(bool[,] template) 
+    private void FillPuzzleAreaFromTemplate(bool[,] template) 
     {
         foreach(bool i in template)
         {

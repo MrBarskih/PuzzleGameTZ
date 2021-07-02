@@ -19,6 +19,7 @@ public class SafeareaBorder : MonoBehaviour
     public void CalculateSafeAreaBorders()
     {
         var safeAreaRectTransform = gameObject.GetComponent<RectTransform>();
+
         var anchorMin = Screen.safeArea.position;
         var anchorMax = anchorMin + Screen.safeArea.size;
 
