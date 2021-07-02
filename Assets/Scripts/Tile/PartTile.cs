@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PartTile : MonoBehaviour
+public class PartTile : BaseTile
 {
-    void Awake()
+    new void Awake()
     {
-        gameObject.GetComponent<Image>().color = new Color32(255, 142, 0, 255);
-        gameObject.GetComponent<Image>().raycastTarget = false;
+        base.Awake();
+    }
+
+    new void Start() 
+    {
+        base.Start();
+        imageCompanent.color = new Color32(255, 142, 0, 255);
     }
 }
