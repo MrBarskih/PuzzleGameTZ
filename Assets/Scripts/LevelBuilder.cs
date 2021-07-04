@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class LevelBuilder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static LevelBuilder instance = null;
+
+    public static bool[,] PuzzleTemplate { get; private set; }
+    private static IJsonParser jsonLevel;
+
+    void Awake()
+    {
+        //singleton
+        if (instance == null) 
+            instance = this;
+        else if (instance == this)
+            Destroy(gameObject);
+
+        jsonLevel = Factory.CreateJsonParser("Level1");
+    }
+
+    private void Start()
+    {
+        PuzzleTemplate = jsonLevel.GetTemplate();
+    }
+
+    static void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private static void fillPuzzleAreaFromTemplate() { 
+    
     }
 }
