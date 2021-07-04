@@ -9,34 +9,33 @@ public class FigureConstractor : MonoBehaviour
 
     [SerializeField]
     private GameObject puzzleTile;
-    private List<bool[,]> puzzleParts;
+    private List<bool[,]> puzzlePartTemplates;
     private GameObject[] puzzleContainers;
 
     private void Awake()
     {
         puzzleContainers = GameObject.FindGameObjectsWithTag("PartContainer");
         jsonParser = Factory.CreateJsonParser("Level1");
-        puzzleParts = jsonParser.GetParts();
+        puzzlePartTemplates = jsonParser.GetParts();
 
-        for (int i = 0; i < puzzleParts.Count; i++)
+        for (int i = 0; i < puzzlePartTemplates.Count; i++)
         {
-            CreateFigure(puzzleParts[i], puzzleContainers[i]);
+            CreatePuzzlePart(puzzlePartTemplates[i], puzzleContainers[i]);
         }
     }
 
 
-    private void CreateFigure(bool[,] templateOfFugure, GameObject partContainer)
+    private void CreatePuzzlePart(bool[,] puzzlePartTemplate, GameObject partContainer)
     {
+        var smallerPartTemplate = RemoveExcessTiles(puzzlePartTemplate);
 
-        var figureInRectangle = GetFigureInRectangleFromTemplate(templateOfFugure);
+        var partBody = CreatePuzzlePartBody(partContainer, smallerPartTemplate);
 
-        var partBody = CreatePartBody(partContainer, figureInRectangle);
-
-        for (int i = 0; i < figureInRectangle.GetLength(0); i++)
+        for (int i = 0; i < smallerPartTemplate.GetLength(0); i++)
         {
-            for (int j = 0; j < figureInRectangle.GetLength(1); j++)
+            for (int j = 0; j < smallerPartTemplate.GetLength(1); j++)
             {
-                if (figureInRectangle[i, j])
+                if (smallerPartTemplate[i, j])
                 {
                     var tile = Instantiate(puzzleTile, partBody.transform);
                     tile.AddComponent<PartTile>();
@@ -50,13 +49,13 @@ public class FigureConstractor : MonoBehaviour
 
     }
     //Generate small massive to create figure
-    private bool[,] GetFigureInRectangleFromTemplate(bool[,] templateOfFugure)
+    private bool[,] RemoveExcessTiles(bool[,] templateOfFugure)
     {
         int leftmost = 3;
         int rightmost = 0;
         int highest = 3;
         int lowest = 0;
-        //Find highest leftmost point of the figure and lowest rightmost point to rewrite massive
+        //Find highest leftmost point of the figure and lowest rightmost point at part template from json file to rewrite massive
         for (int i = 0; i < templateOfFugure.GetLength(0); i++)
         {
             for (int j = 0; j < templateOfFugure.GetLength(1); j++)
@@ -74,27 +73,27 @@ public class FigureConstractor : MonoBehaviour
         //rewrite from bool[4,4] massive to a smaller massive to create a figure
         int rectangeWidth = rightmost - leftmost;
         int rectangeHeight = lowest - highest;
-        bool[,] figureInRectangle = new bool[rectangeHeight + 1, rectangeWidth + 1];
+        bool[,] PuzzlePartTemplate = new bool[rectangeHeight + 1, rectangeWidth + 1];
         for (int i = highest; i <= lowest; i++)
         {
             for (int j = leftmost; j <= rightmost; j++)
             {
                 if (templateOfFugure[i, j])
                 {
-                    figureInRectangle[i - highest, j - leftmost] = true;
+                    PuzzlePartTemplate[i - highest, j - leftmost] = true;
                 }
                 else
                 {
-                    figureInRectangle[i - highest, j - leftmost] = false;
+                    PuzzlePartTemplate[i - highest, j - leftmost] = false;
                 }
 
             }
         }
-        return figureInRectangle;
+        return PuzzlePartTemplate;
     }
 
-    //instantiate paryBody gameobject where we put figure tiles
-    private GameObject CreatePartBody(GameObject partContainer, bool[,] figureInRectangle)
+    //instantiate paryBody gameobject where we put part tiles
+    private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[,] figureInRectangle)
     {
         Vector2 sizeFirgure = new Vector2(figureInRectangle.GetLength(1) * 100, figureInRectangle.GetLength(0) * 100);
         GameObject partBody = Instantiate(new GameObject("partBody"), partContainer.transform);
