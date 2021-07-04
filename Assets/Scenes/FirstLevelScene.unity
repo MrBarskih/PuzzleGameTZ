@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 207669408}
   m_Layer: 5
   m_Name: FooterCanvas
-  m_TagString: SafeAreaElement
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,17 +573,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210554100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.42}
+  m_LocalPosition: {x: 0, y: 0, z: 2.4199996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1974036184}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -680, y: 719}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &210554102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,6 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aaa6fcbc44e2c4abdf43ff5ca68a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
 --- !u!114 &210554103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +651,7 @@ GameObject:
   - component: {fileID: 306382093}
   m_Layer: 5
   m_Name: PuzzleArea
-  m_TagString: Untagged
+  m_TagString: PuzzleArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
@@ -763,7 +764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23bf5a2fb9543824e8c43a3642f53acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
 --- !u!1 &441627381
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 541887907}
   m_Layer: 5
   m_Name: MainContent
-  m_TagString: SafeAreaElement
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1108,7 +1108,7 @@ GameObject:
   - component: {fileID: 1549683995}
   m_Layer: 5
   m_Name: Header
-  m_TagString: SafeAreaElement
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

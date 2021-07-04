@@ -8,8 +8,8 @@ TagManager:
   - PartContainer
   - PartBody
   - PartTile
-  - SafeAreaElement
   - Canvas
+  - PuzzleArea
   layers:
   - Default
   - TransparentFX
