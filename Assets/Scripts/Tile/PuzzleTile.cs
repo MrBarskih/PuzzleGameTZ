@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TemplateTile : BaseTile
+public class PuzzleTile : BaseTile
 {
 
     new void Awake()

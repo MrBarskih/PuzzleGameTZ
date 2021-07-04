@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,24 +26,32 @@ public class LevelBuilder : MonoBehaviour
     private void Start()
     {
         PuzzleTemplate = jsonLevel.GetTemplate();
-        fillPuzzleAreaFromTemplate();
+        FillPuzzleAreaFromTemplate();
+        CreatePuzzleParts();
     }
+
+
 
     static void Update()
     {
         
     }
 
-    private void fillPuzzleAreaFromTemplate() {
+    private void FillPuzzleAreaFromTemplate() {
         var puzzleArea = GameObject.FindGameObjectWithTag("PuzzleArea");
 
-        foreach (bool templateTile in PuzzleTemplate)
+        foreach (bool isPuzzleTile in PuzzleTemplate)
         {
             var currentTile = Instantiate(tile, puzzleArea.transform);
-            if (templateTile) 
+            if (isPuzzleTile) 
             {
-                currentTile.AddComponent<TemplateTile>();
+                currentTile.AddComponent<PuzzleTile>();
             }
         }
+    }
+
+    private void CreatePuzzleParts()
+    {
+
     }
 }
