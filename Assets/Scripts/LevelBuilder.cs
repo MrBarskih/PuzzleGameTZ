@@ -20,18 +20,25 @@ public class LevelBuilder : MonoBehaviour
         else if (instance == this)
             Destroy(gameObject);
 
-        jsonLevel = Factory.CreateJsonParser("Level2");
+        jsonLevel = Factory.CreateJsonParser("Level1");
     }
 
     private void Start()
     {
-        PuzzleTemplate = jsonLevel.GetTemplate();
         FillPuzzleAreaFromTemplate();
-        CreatePuzzleParts();
+
+        var puzzlePartTemplates = jsonLevel.GetParts();
+        var puzzlePartContainers = GameObject.FindGameObjectsWithTag("PartContainer");
+        for (int i = 0; i < puzzlePartTemplates.Count; i++)
+        {
+            CreatePuzzlePart(puzzlePartTemplates[i], puzzlePartContainers[i]);
+        }
     }
 
-    private void FillPuzzleAreaFromTemplate() {
-        var puzzleArea = GameObject.FindGameObjectWithTag("PuzzleArea");
+    private void FillPuzzleAreaFromTemplate() 
+    {
+        GameObject puzzleArea = GameObject.FindGameObjectWithTag("PuzzleArea");
+        PuzzleTemplate = jsonLevel.GetTemplate();
 
         foreach (bool isPuzzleTile in PuzzleTemplate)
         {
@@ -40,17 +47,6 @@ public class LevelBuilder : MonoBehaviour
             {
                 currentTile.AddComponent<PuzzleTile>();
             }
-        }
-    }
-
-    private void CreatePuzzleParts()
-    {
-        var puzzlePartContainers = GameObject.FindGameObjectsWithTag("PartContainer");
-        var puzzleParts = jsonLevel.GetParts();
-
-        for (int i = 0; i < puzzleParts.Count; i++)
-        {
-            CreatePuzzlePart(puzzleParts[i], puzzlePartContainers[i]);
         }
     }
 
@@ -68,28 +64,25 @@ public class LevelBuilder : MonoBehaviour
                 {
                     var tile = Instantiate(puzzleTile, puzzlePartBody.transform);
                     tile.AddComponent<PartTile>();
-                    var tileRectTransform = tile.GetComponent<RectTransform>();
-                    tileRectTransform.anchoredPosition = new Vector2(50 + (100 * j), -50 - (100 * i));
-                    tileRectTransform.anchorMin = new Vector2(0, 1);
-                    tileRectTransform.anchorMax = new Vector2(0, 1);
+                    tile.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 + (100 * j), -50 - (100 * i));
                 }
             }
         }
 
     }
-    //Generate small massive to create figure
-    private bool[,] RemoveExcessTiles(bool[,] templateOfFugure)
+    //Generate small massive to create puzzle part
+    private bool[,] RemoveExcessTiles(bool[,] puzzlePartTemplate)
     {
         int leftmost = 3;
         int rightmost = 0;
         int highest = 3;
         int lowest = 0;
-        //Find highest leftmost point of the figure and lowest rightmost point at part template from json file to rewrite massive
-        for (int i = 0; i < templateOfFugure.GetLength(0); i++)
+        //Find highest leftmost point of the part and lowest rightmost point at part template from json file to rewrite massive
+        for (int i = 0; i < puzzlePartTemplate.GetLength(0); i++)
         {
-            for (int j = 0; j < templateOfFugure.GetLength(1); j++)
+            for (int j = 0; j < puzzlePartTemplate.GetLength(1); j++)
             {
-                if (templateOfFugure[i, j])
+                if (puzzlePartTemplate[i, j])
                 {
                     if (i < highest) highest = i;
                     if (i > lowest) lowest = i;
@@ -102,34 +95,34 @@ public class LevelBuilder : MonoBehaviour
         //rewrite from bool[4,4] massive to a smaller massive to create a figure
         int rectangeWidth = rightmost - leftmost;
         int rectangeHeight = lowest - highest;
-        bool[,] PuzzlePartTemplate = new bool[rectangeHeight + 1, rectangeWidth + 1];
+        bool[,] smallerPuzzlePartTemplate = new bool[rectangeHeight + 1, rectangeWidth + 1];
         for (int i = highest; i <= lowest; i++)
         {
             for (int j = leftmost; j <= rightmost; j++)
             {
-                if (templateOfFugure[i, j])
+                if (puzzlePartTemplate[i, j])
                 {
-                    PuzzlePartTemplate[i - highest, j - leftmost] = true;
+                    smallerPuzzlePartTemplate[i - highest, j - leftmost] = true;
                 }
                 else
                 {
-                    PuzzlePartTemplate[i - highest, j - leftmost] = false;
+                    smallerPuzzlePartTemplate[i - highest, j - leftmost] = false;
                 }
 
             }
         }
-        return PuzzlePartTemplate;
+        return smallerPuzzlePartTemplate;
     }
 
-    //instantiate paryBody gameobject where we put part tiles
-    private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[,] figureInRectangle)
+    //instantiate partBody gameobject where we put part tiles
+    private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[,] smallerPuzzlePartTemplate)
     {
-        Vector2 sizeFirgure = new Vector2(figureInRectangle.GetLength(1) * 100, figureInRectangle.GetLength(0) * 100);
-        GameObject partBody = Instantiate(new GameObject("partBody"), partContainer.transform);
+        Vector2 puzzlePartSize = new Vector2(smallerPuzzlePartTemplate.GetLength(1) * 100, smallerPuzzlePartTemplate.GetLength(0) * 100);
+        GameObject partBody = new GameObject("partBody");
         partBody.AddComponent<PartBody>();
-
-        partBody.GetComponent<RectTransform>().sizeDelta = sizeFirgure;
-        partBody.GetComponent<BoxCollider2D>().size = sizeFirgure;
+        partBody.GetComponent<RectTransform>().sizeDelta = puzzlePartSize;
+        partBody.transform.SetParent(partContainer.transform, false);
+        partBody.GetComponent<BoxCollider2D>().size = puzzlePartSize;
 
         return partBody;
     }

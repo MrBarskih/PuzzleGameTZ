@@ -14,5 +14,7 @@ public class PartTile : BaseTile
     {
         base.Start();
         imageCompanent.color = new Color32(255, 142, 0, 255);
+        gameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0, 1);
+        gameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0, 1);
     }
 }
