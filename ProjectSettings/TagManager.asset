@@ -4,12 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Tile
   - PartContainer
-  - PartBody
-  - PartTile
   - Canvas
-  - PuzzleArea
+  - Tile
   layers:
   - Default
   - TransparentFX

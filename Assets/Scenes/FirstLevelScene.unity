@@ -551,7 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aaa6fcbc44e2c4abdf43ff5ca68a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
+  idleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
+  puzzleArea: {fileID: 306382087}
 --- !u!114 &210554103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,7 +607,7 @@ GameObject:
   - component: {fileID: 306382093}
   m_Layer: 5
   m_Name: PuzzleArea
-  m_TagString: PuzzleArea
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4

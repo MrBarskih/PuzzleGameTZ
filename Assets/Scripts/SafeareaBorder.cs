@@ -1,12 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SafeareaBorder : MonoBehaviour
 {
     private ScreenOrientation currentScreenOrientation;
 
-    void Update()
+    private void Update()
     {
         if (Screen.orientation != currentScreenOrientation)
         {
@@ -18,7 +16,7 @@ public class SafeareaBorder : MonoBehaviour
 
     public void CalculateSafeAreaBorders()
     {
-        var safeAreaRectTransform = gameObject.GetComponent<RectTransform>();
+        var rectTransformCompanent = GetComponent<RectTransform>();
 
         var anchorMin = Screen.safeArea.position;
         var anchorMax = anchorMin + Screen.safeArea.size;
@@ -28,7 +26,7 @@ public class SafeareaBorder : MonoBehaviour
         anchorMax.x /= Screen.currentResolution.width;
         anchorMax.y /= Screen.currentResolution.height;
 
-        safeAreaRectTransform.anchorMin = anchorMin;
-        safeAreaRectTransform.anchorMax = anchorMax;
+        rectTransformCompanent.anchorMin = anchorMin;
+        rectTransformCompanent.anchorMax = anchorMax;
     }
 }
