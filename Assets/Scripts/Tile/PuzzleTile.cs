@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PuzzleTile : BaseTile
 {
 
-    new void Awake()
+    new private void Awake()
     {
         base.Awake();  
     }
 
-    new void Start()
+    new private void Start()
     {
         base.Start();
-        imageCompanent.color = new Color32(194, 255, 131, 255);
+        imageCompanent.color = new Color32(194, 255, 131, 255);//green
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

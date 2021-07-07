@@ -1,27 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D), typeof(RectTransform))]
 public class PartBody : MonoBehaviour
 {
-    public bool isHeld;
-
-    private BoxCollider2D partBodyBoxColider2D;
-    private RectTransform partBodyRectTransform;
-    void Awake()
+    private void Awake()
     {
-        partBodyBoxColider2D = gameObject.AddComponent<BoxCollider2D>();
-        partBodyRectTransform = gameObject.AddComponent<RectTransform>();
-
-        partBodyBoxColider2D.isTrigger = true;
-        GoHome();
-
-        gameObject.tag = "PartBody";
+        GetComponent<BoxCollider2D>().isTrigger = true;
+        ReturnToStartPosition();
     }
 
-    public void GoHome() 
+    public void ReturnToStartPosition() 
     {
-        partBodyRectTransform.anchoredPosition = new Vector2(0,0);
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
     }
 }

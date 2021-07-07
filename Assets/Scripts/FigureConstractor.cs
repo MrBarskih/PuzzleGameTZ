@@ -5,22 +5,20 @@ using UnityEngine.UI;
 
 public class FigureConstractor : MonoBehaviour
 {
-    private IJsonParser jsonParser;
-
-    [SerializeField]
-    private GameObject puzzleTile;
+    [SerializeField] private GameObject puzzleTile;
     private List<bool[,]> puzzlePartTemplates;
-    private GameObject[] puzzleContainers;
+    private GameObject[] puzzlePartContainers;
+    private IJsonParser jsonLevel;
 
     private void Awake()
     {
-        puzzleContainers = GameObject.FindGameObjectsWithTag("PartContainer");
-        jsonParser = Factory.CreateJsonParser("Level1");
-        puzzlePartTemplates = jsonParser.GetParts();
+        puzzlePartContainers = GameObject.FindGameObjectsWithTag("PartContainer");
+        jsonLevel = Factory.CreateJsonParser("Level1");
+        puzzlePartTemplates = jsonLevel.GetParts();
 
         for (int i = 0; i < puzzlePartTemplates.Count; i++)
         {
-            CreatePuzzlePart(puzzlePartTemplates[i], puzzleContainers[i]);
+            CreatePuzzlePart(puzzlePartTemplates[i], puzzlePartContainers[i]);
         }
     }
 

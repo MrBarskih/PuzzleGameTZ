@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelBuilder : MonoBehaviour
 {
-    public static LevelBuilder instance = null;
+    public static LevelBuilder Instance = null;
 
     public static bool[,] PuzzleTemplate { get; private set; }
     private static IJsonParser jsonLevel;
@@ -14,10 +14,9 @@ public class LevelBuilder : MonoBehaviour
 
     void Awake()
     {
-        //singleton
-        if (instance == null) 
-            instance = this;
-        else if (instance == this)
+        if (Instance == null) 
+            Instance = this;
+        else if (Instance == this)
             Destroy(gameObject);
 
         jsonLevel = Factory.CreateJsonParser("Level1");
