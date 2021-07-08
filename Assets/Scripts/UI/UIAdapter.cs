@@ -5,6 +5,8 @@ public class UIAdapter : MonoBehaviour
 {
     [SerializeField] private CanvasScaler mainCanvasScaler;
     [SerializeField] private RectTransform safeareaRectTransform;
+    [SerializeField] private RectTransform headerRectTransform;
+    [SerializeField] private RectTransform puzzleAreaRectTransform;
 
     ScreenOrientation currentScreenOrientation = ScreenOrientation.AutoRotation;
 
@@ -14,7 +16,16 @@ public class UIAdapter : MonoBehaviour
         {
             currentScreenOrientation = Screen.orientation;
             CalculateSafeAreaBorders();
-            AdjustCanvasScaler();
+            if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+            {
+                AdjustCanvasScaler(new Vector2(1650, 2048), 0f);
+                puzzleAreaRectTransform.localScale = new Vector3(1.5f, 1.5f);
+            }
+            else
+            {
+                AdjustCanvasScaler(new Vector2(1650, 1200), 1f);
+                puzzleAreaRectTransform.localScale = new Vector3(1f, 1f);
+            }
         }
     }
 
@@ -32,17 +43,9 @@ public class UIAdapter : MonoBehaviour
         safeareaRectTransform.anchorMax = anchorMax;
     }
 
-    private void AdjustCanvasScaler()
+    private void AdjustCanvasScaler(Vector2 referenceResolution, float matchWidthOrHeight)
     {
-        if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
-        {
-            mainCanvasScaler.referenceResolution = new Vector2(1250, 2048);
-            mainCanvasScaler.matchWidthOrHeight = 0f;
-        }
-        else
-        {
-            mainCanvasScaler.referenceResolution = new Vector2(1250, 1000);
-            mainCanvasScaler.matchWidthOrHeight = 1f;
-        }
+            mainCanvasScaler.referenceResolution = referenceResolution;
+            mainCanvasScaler.matchWidthOrHeight = matchWidthOrHeight;
     }
 }

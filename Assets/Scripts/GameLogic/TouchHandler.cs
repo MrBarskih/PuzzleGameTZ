@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class TouchHandler : MonoBehaviour
 {
+    [SerializeField] private RectTransform puzzleAreaTransform;
+
     private Transform grabbedPuzzlePart = null;
     private RaycastHit2D[] hittedByRayCast;
 
@@ -18,6 +20,7 @@ public class TouchHandler : MonoBehaviour
                     if (gameObject.transform.GetComponent<PartBody>())
                     {
                         grabbedPuzzlePart = gameObject.transform;
+                        grabbedPuzzlePart.localScale = puzzleAreaTransform.localScale;
                         return;
                     }
                 }
@@ -35,6 +38,7 @@ public class TouchHandler : MonoBehaviour
             {
                 if (grabbedPuzzlePart)
                 {
+                    grabbedPuzzlePart.localScale = new Vector3(1f, 1f);
                     grabbedPuzzlePart.GetComponent<PartBody>().ReturnToStartPosition();
                     grabbedPuzzlePart = null;
                 }
