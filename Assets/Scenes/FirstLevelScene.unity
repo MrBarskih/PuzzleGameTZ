@@ -604,7 +604,6 @@ GameObject:
   - component: {fileID: 306382090}
   - component: {fileID: 306382089}
   - component: {fileID: 306382092}
-  - component: {fileID: 306382093}
   m_Layer: 5
   m_Name: PuzzleArea
   m_TagString: Untagged
@@ -708,18 +707,6 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &306382093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306382087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23bf5a2fb9543824e8c43a3642f53acc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &441627381
 GameObject:
   m_ObjectHideFlags: 0
