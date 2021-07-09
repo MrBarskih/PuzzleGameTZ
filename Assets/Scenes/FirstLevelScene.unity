@@ -512,7 +512,6 @@ GameObject:
   m_Component:
   - component: {fileID: 210554101}
   - component: {fileID: 210554102}
-  - component: {fileID: 210554103}
   m_Layer: 0
   m_Name: LevelBuilder
   m_TagString: Untagged
@@ -551,59 +550,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aaa6fcbc44e2c4abdf43ff5ca68a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Level1
   idleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
   puzzleArea: {fileID: 306382087}
---- !u!212 &210554103
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 210554100}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f81244a6eb423549b3ff187c9260d31, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.79, y: 0.8}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  puzzlePartContainers:
+  - {fileID: 201929492}
+  - {fileID: 1326675245}
+  - {fileID: 87286039}
+  - {fileID: 861450911}
+  levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
 --- !u!1 &306382087
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +685,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 306382087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0261106cdee248e41a214f5890871675, type: 3}
+  m_Script: {fileID: 11500000, guid: e59eb8248fc3a6a4cbd079942ff09362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &441627381
@@ -1015,7 +970,6 @@ GameObject:
   m_Component:
   - component: {fileID: 875872573}
   - component: {fileID: 875872574}
-  - component: {fileID: 875872575}
   m_Layer: 0
   m_Name: UIAdapter
   m_TagString: Untagged
@@ -1063,57 +1017,6 @@ MonoBehaviour:
   landscapeMatchWidthOrHeight: 1
   portraitPuzzleAreaLocalScale: {x: 1.5, y: 1.5}
   landscapePuzzleAreaLocalScale: {x: 1, y: 1}
---- !u!212 &875872575
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875872572}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aab3c122c17b68f439efe8cdc78eb729, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.93, y: 0.8}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1326675245
 GameObject:
   m_ObjectHideFlags: 0

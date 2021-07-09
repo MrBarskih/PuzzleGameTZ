@@ -1,28 +1,42 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class LevelBuilder : MonoBehaviour
 {
+    [SerializeField] private string fileName;
     [SerializeField] private GameObject idleTile;
-    [SerializeField] GameObject puzzleArea;
-    public static bool[,] PuzzleTemplate { get; private set; }
+    [SerializeField] private GameObject puzzleArea;
+    [SerializeField] private List<GameObject> puzzlePartContainers = new List<GameObject>();
+    [SerializeField] private LevelDataFromJson levelData;
 
     private static IJsonParser jsonLevel;
     
     private void Awake()
     {
-        jsonLevel = Factory.CreateJsonParser("Level1");
+        jsonLevel = Factory.CreateJsonParser($"{fileName}");
     }
 
     private void Start()
     {
-        PuzzleTemplate = jsonLevel.GetTemplate();
-        FillPuzzleAreaFromTemplate(PuzzleTemplate);
+        levelData.LevelName = fileName;
+
+        levelData.PuzzleTemplate = jsonLevel.GetTemplate();
+        levelData.PuzzleParts = jsonLevel.GetParts();
+        
+        var puzzleTemplate = jsonLevel.GetTemplate();
+
+        if (puzzleTemplate != null)
+        {
+            FillPuzzleAreaFromTemplate(puzzleTemplate);
+        }
 
         var puzzlePartTemplates = jsonLevel.GetParts();
-        var puzzlePartContainers = GameObject.FindGameObjectsWithTag("PartContainer");
-        for (int i = 0; i < puzzlePartTemplates.Count; i++)
+        if (puzzlePartTemplates != null)
         {
-            CreatePuzzlePart(puzzlePartTemplates[i], puzzlePartContainers[i]);
+            for (int i = 0; i < puzzlePartTemplates.Count; i++)
+            {
+                CreatePuzzlePart(puzzlePartTemplates[i], puzzlePartContainers[i]);
+            }
         }
     }
 
@@ -57,7 +71,6 @@ public class LevelBuilder : MonoBehaviour
 
     }  
 
-    //instantiate partBody gameobject where we put part tiles
     private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[,] puzzlePartTemplate)
     {
         Vector2 puzzlePartSize = new Vector2(puzzlePartTemplate.GetLength(1) * 100, puzzlePartTemplate.GetLength(0) * 100);
