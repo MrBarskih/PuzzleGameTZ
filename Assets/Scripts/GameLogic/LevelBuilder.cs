@@ -4,20 +4,12 @@ public class LevelBuilder : MonoBehaviour
 {
     [SerializeField] private GameObject idleTile;
     [SerializeField] GameObject puzzleArea;
-
-    public static LevelBuilder Instance = null;
     public static bool[,] PuzzleTemplate { get; private set; }
 
     private static IJsonParser jsonLevel;
     
-
     private void Awake()
     {
-        if (Instance == null) 
-            Instance = this;
-        else if (Instance == this)
-            Destroy(gameObject);
-
         jsonLevel = Factory.CreateJsonParser("Level1");
     }
 
