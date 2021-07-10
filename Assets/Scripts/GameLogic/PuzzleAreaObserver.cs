@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class PuzzleAreaObserver : MonoBehaviour
 {
-    private bool[,] puzzleTemplate;
+    [SerializeField] private LevelDataFromJson levelData;
+    private bool[,] curentPuzzleProgress;
 
     private void Start()
     {
-    }
-
-    private void GetPuzzleTemplate(bool[,] puzzleTemplate) 
-    {
-        this.puzzleTemplate = puzzleTemplate;
+        
     }
 }

@@ -9,7 +9,15 @@ public class JsonParser : IJsonParser
     public JsonParser(string level)
     {
         TextAsset levelFile = Resources.Load($"{level}") as TextAsset;
-        jsonFileStructure = JObject.Parse(levelFile.ToString());
+
+        if (levelFile != null)
+        {
+            jsonFileStructure = JObject.Parse(levelFile.ToString());
+        }
+        else
+        {
+            throw new UnityException("There is no levels with that name");
+        }
     }
 
     public List<bool[,]> GetParts()

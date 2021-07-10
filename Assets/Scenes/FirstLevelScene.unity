@@ -512,6 +512,8 @@ GameObject:
   m_Component:
   - component: {fileID: 210554101}
   - component: {fileID: 210554102}
+  - component: {fileID: 210554103}
+  - component: {fileID: 210554104}
   m_Layer: 0
   m_Name: LevelBuilder
   m_TagString: Untagged
@@ -550,15 +552,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aaa6fcbc44e2c4abdf43ff5ca68a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Level1
-  idleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
+  fileName: Level2
+  levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
+--- !u!114 &210554103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210554100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d77e5d9b092bf544903cb13d32fcb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
   puzzleArea: {fileID: 306382087}
+  idleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
+--- !u!114 &210554104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210554100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae0afb0e918e744aae5d0dbd9f26589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
+  levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
   puzzlePartContainers:
   - {fileID: 201929492}
   - {fileID: 1326675245}
   - {fileID: 87286039}
   - {fileID: 861450911}
-  levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
 --- !u!1 &306382087
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59eb8248fc3a6a4cbd079942ff09362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
 --- !u!1 &441627381
 GameObject:
   m_ObjectHideFlags: 0

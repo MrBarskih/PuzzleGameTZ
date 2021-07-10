@@ -6,5 +6,5 @@ public class LevelDataFromJson : ScriptableObject
 {
     public string LevelName;
     public bool[,] PuzzleTemplate;
-    public List<bool[,]> PuzzleParts;
+    public List<bool[,]> PuzzlePartsTemplates;
 }
