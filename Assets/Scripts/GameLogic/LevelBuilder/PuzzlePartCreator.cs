@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//(PuzzleTile lies in PuzzlePartBody)PuzzlePart that lies at PuzzlePartContainer
+//PuzzlePart->(PuzzlePartBody + PuzzlePartTiles)
 public class PuzzlePartCreator : MonoBehaviour
 {
     [SerializeField] private GameObject idleTile;
@@ -23,7 +25,6 @@ public class PuzzlePartCreator : MonoBehaviour
     private void CreatePuzzlePart(bool[][] puzzlePartTemplate, GameObject puzzlePartContainer)
     {
         var puzzlePartBody = CreatePuzzlePartBody(puzzlePartContainer, puzzlePartTemplate);
-        List<Collider2D> childTilesCollider2DComponents = new List<Collider2D>();
 
         for (int i = 0; i < puzzlePartTemplate.Length; i++)
         {
@@ -34,11 +35,9 @@ public class PuzzlePartCreator : MonoBehaviour
                     var tile = Instantiate(idleTile, puzzlePartBody.transform);
                     tile.AddComponent<PartTile>();
                     tile.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 + (100 * j), -50 - (100 * i));
-                    childTilesCollider2DComponents.Add(tile.GetComponent<Collider2D>());
                 }
             }
         }
-        puzzlePartBody.GetComponent<PartBody>().childTilesCollider2DComponents = childTilesCollider2DComponents;
     }
 
     private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[][] puzzlePartTemplate)
@@ -49,8 +48,8 @@ public class PuzzlePartCreator : MonoBehaviour
 
         partBody.AddComponent<PartBody>();
         partBody.GetComponent<RectTransform>().sizeDelta = puzzlePartSize;
-        partBody.transform.SetParent(partContainer.transform, false);
         partBody.GetComponent<BoxCollider2D>().size = puzzlePartSize;
+        partBody.transform.SetParent(partContainer.transform, false);
 
         return partBody;
     }
