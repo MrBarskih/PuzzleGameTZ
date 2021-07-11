@@ -20,15 +20,15 @@ public class PuzzlePartCreator : MonoBehaviour
         }
     }
 
-    private void CreatePuzzlePart(bool[,] puzzlePartTemplate, GameObject puzzlePartContainer)
+    private void CreatePuzzlePart(bool[][] puzzlePartTemplate, GameObject puzzlePartContainer)
     {
         var puzzlePartBody = CreatePuzzlePartBody(puzzlePartContainer, puzzlePartTemplate);
 
-        for (int i = 0; i < puzzlePartTemplate.GetLength(0); i++)
+        for (int i = 0; i < puzzlePartTemplate.Length; i++)
         {
-            for (int j = 0; j < puzzlePartTemplate.GetLength(1); j++)
+            for (int j = 0; j < puzzlePartTemplate[i].Length; j++)
             {
-                if (puzzlePartTemplate[i, j])
+                if (puzzlePartTemplate[i][j])
                 {
                     var tile = Instantiate(idleTile, puzzlePartBody.transform);
                     tile.AddComponent<PartTile>();
@@ -39,11 +39,11 @@ public class PuzzlePartCreator : MonoBehaviour
 
     }
 
-    private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[,] puzzlePartTemplate)
+    private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[][] puzzlePartTemplate)
     {
         GameObject partBody = new GameObject("partBody");
 
-        Vector2 puzzlePartSize = new Vector2(puzzlePartTemplate.GetLength(1) * 100, puzzlePartTemplate.GetLength(0) * 100);
+        Vector2 puzzlePartSize = new Vector2(puzzlePartTemplate[0].Length * 100, puzzlePartTemplate.Length * 100);
 
         partBody.AddComponent<PartBody>();
         partBody.GetComponent<RectTransform>().sizeDelta = puzzlePartSize;

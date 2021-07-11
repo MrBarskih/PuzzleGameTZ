@@ -20,28 +20,28 @@ public class JsonParser : IJsonParser
         }
     }
 
-    public List<bool[,]> GetParts()
+    public List<bool[][]> GetParts()
     {
-        List<bool[,]> result = new List<bool[,]>();
+        List<bool[][]> result = new List<bool[][]>();
 
         foreach (JToken value in jsonFileStructure.GetValue("parts"))
         {
-            var puzzlePartTemplate = RemoveExcessTiles(value.ToObject<bool[,]>());
+            bool[][] puzzlePartTemplate = RemoveExcessTiles(value.ToObject<bool[][]>());
             result.Add(puzzlePartTemplate);
         }
 
         return result;
     }
 
-    public bool[,] GetTemplate()
+    public bool[][] GetTemplate()
     {
-        bool[,] result = jsonFileStructure.GetValue("template").ToObject<bool[,]>();
+        bool[][] result = jsonFileStructure.GetValue("template").ToObject<bool[][]>();
 
         return result;
     }
 
     //Generate small massive to create puzzle part
-    private bool[,] RemoveExcessTiles(bool[,] puzzlePartTemplate)
+    private bool[][] RemoveExcessTiles(bool[][] puzzlePartTemplate)
     {
         int leftmost = 3;
         int rightmost = 0;
@@ -49,11 +49,11 @@ public class JsonParser : IJsonParser
         int lowest = 0;
 
         //Find highest leftmost point of the part and lowest rightmost point at part template from json file to rewrite massive
-        for (int i = 0; i < puzzlePartTemplate.GetLength(0); i++)
+        for (int i = 0; i < puzzlePartTemplate.Length; i++)
         {
-            for (int j = 0; j < puzzlePartTemplate.GetLength(1); j++)
+            for (int j = 0; j < puzzlePartTemplate[i].Length; j++)
             {
-                if (puzzlePartTemplate[i, j])
+                if (puzzlePartTemplate[i][j])
                 {
                     if (i < highest) highest = i;
                     if (i > lowest) lowest = i;
@@ -67,18 +67,22 @@ public class JsonParser : IJsonParser
         //rewrite from bool[4,4] massive to a smaller massive to create a figure
         int rectangeWidth = rightmost - leftmost;
         int rectangeHeight = lowest - highest;
-        bool[,] smallerPuzzlePartTemplate = new bool[rectangeHeight + 1, rectangeWidth + 1];
+        bool[][] smallerPuzzlePartTemplate = new bool[rectangeHeight + 1][];
+        for (int i = 0; i < smallerPuzzlePartTemplate.Length; i++)
+        {
+            smallerPuzzlePartTemplate[i] = new bool[rectangeWidth + 1];
+        }
         for (int i = highest; i <= lowest; i++)
         {
             for (int j = leftmost; j <= rightmost; j++)
             {
-                if (puzzlePartTemplate[i, j])
+                if (puzzlePartTemplate[i][j])
                 {
-                    smallerPuzzlePartTemplate[i - highest, j - leftmost] = true;
+                    smallerPuzzlePartTemplate[i - highest][j - leftmost] = true;
                 }
                 else
                 {
-                    smallerPuzzlePartTemplate[i - highest, j - leftmost] = false;
+                    smallerPuzzlePartTemplate[i - highest][j - leftmost] = false;
                 }
 
             }

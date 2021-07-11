@@ -38,8 +38,8 @@ public class TouchHandler : MonoBehaviour
             {
                 if (grabbedPuzzlePart)
                 {
-                    grabbedPuzzlePart.localScale = new Vector3(1f, 1f);
-                    grabbedPuzzlePart.GetComponent<PartBody>().ReturnToStartPosition();
+                    //grabbedPuzzlePart.localScale = new Vector3(1f, 1f);
+                    //grabbedPuzzlePart.GetComponent<PartBody>().ReturnToStartPosition();
                     grabbedPuzzlePart = null;
                 }
             }

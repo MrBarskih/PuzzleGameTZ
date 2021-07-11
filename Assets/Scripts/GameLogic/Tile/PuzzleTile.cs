@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class PuzzleTile : BaseTile
 {
-    public delegate void TileStateHandler(GameObject gameObject);
+    public delegate void TileStateHandler(int row, int column);
     public event TileStateHandler PartTileOnMe;
     public event TileStateHandler ImFree;
-    public int[][] myPositionXY;
+    public int puzzleAreaRowPosition;
+    public int puzzleAreaColumnPosition;
 
+    private Collider2D hostOfTheTile;
+    private bool amIFree = true;
 
     new private void Awake()
     {
@@ -19,13 +22,22 @@ public class PuzzleTile : BaseTile
         imageCompanent.color = new Color32(194, 255, 131, 255);//green
     }
 
-    private void OnTriggerEnter2D()
+    private void OnTriggerEnter2D(Collider2D partTile)
     {
-        PartTileOnMe?.Invoke(gameObject);
+        if (amIFree)
+        {
+            amIFree = false;
+            hostOfTheTile = partTile;
+            PartTileOnMe?.Invoke(puzzleAreaRowPosition, puzzleAreaColumnPosition);
+        }
     }
 
-    private void OnTriggerExit2D()
+    private void OnTriggerExit2D(Collider2D partTile)
     {
-        ImFree?.Invoke(gameObject);
+        if (hostOfTheTile == partTile)
+        {
+            amIFree = true;
+            ImFree?.Invoke(puzzleAreaRowPosition, puzzleAreaColumnPosition);
+        }
     }
 }

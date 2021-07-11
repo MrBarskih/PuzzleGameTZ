@@ -12,13 +12,17 @@ public class PuzzleAreaFiller : MonoBehaviour
 
         if (puzzleTemplate != null)
         {
-            foreach (bool isPuzzleTile in puzzleTemplate)
+            for (int i = 0; i < puzzleTemplate.Length; i++)
             {
-                var currentTile = Instantiate(idleTile, puzzleArea.transform);
-                if (isPuzzleTile)
+                for (int j = 0; j < puzzleTemplate[i].Length; j++)
                 {
-                    currentTile.AddComponent<PuzzleTile>()
-                    
+                    var currentTile = Instantiate(idleTile, puzzleArea.transform);
+                    if (puzzleTemplate[i][j])
+                    {
+                        var puzzleTileComponent = currentTile.AddComponent<PuzzleTile>();
+                        puzzleTileComponent.puzzleAreaColumnPosition = j;
+                        puzzleTileComponent.puzzleAreaRowPosition = i;
+                    }
                 }
             }
         }

@@ -5,6 +5,6 @@ using UnityEngine;
 public class LevelDataFromJson : ScriptableObject
 {
     public string LevelName;
-    public bool[,] PuzzleTemplate;
-    public List<bool[,]> PuzzlePartsTemplates;
+    public bool[][] PuzzleTemplate;
+    public List<bool[][]> PuzzlePartsTemplates;
 }
