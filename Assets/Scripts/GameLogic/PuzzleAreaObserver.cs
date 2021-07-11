@@ -6,14 +6,14 @@ public class PuzzleAreaObserver : MonoBehaviour
 {
     [SerializeField] private LevelDataFromJson levelData;
 
-    private bool[][] curentPuzzleProgress;
+    private bool[][] currentPuzzleProgress;
 
     private void Start()
     {
-        curentPuzzleProgress = new bool[levelData.PuzzleTemplate.Length][];
-        for (int i = 0; i < curentPuzzleProgress.Length; i++)
+        currentPuzzleProgress = new bool[levelData.PuzzleTemplate.Length][];
+        for (int i = 0; i < currentPuzzleProgress.Length; i++)
         {
-            curentPuzzleProgress[i] = new bool[levelData.PuzzleTemplate[0].Length];
+            currentPuzzleProgress[i] = new bool[levelData.PuzzleTemplate[0].Length];
         }
         for (int i = 0; i < gameObject.transform.childCount; i++) 
         {
@@ -42,20 +42,27 @@ public class PuzzleAreaObserver : MonoBehaviour
 
     private void SetTrue(int puzzleTileRow, int puzzletileColumn) 
     {
-        curentPuzzleProgress[puzzleTileRow][puzzletileColumn] = true;
+        currentPuzzleProgress[puzzleTileRow][puzzletileColumn] = true;
         CheckWinCondition();
     }
 
     private void SetFalse(int puzzleTileRow, int puzzletileColumn)
     {
-        curentPuzzleProgress[puzzleTileRow][puzzletileColumn] = false;
+        currentPuzzleProgress[puzzleTileRow][puzzletileColumn] = false;
     }
 
     private void CheckWinCondition() 
     {
-        if (Enumerable.SequenceEqual(curentPuzzleProgress, levelData.PuzzleTemplate))
+        for (int i = 0; i < currentPuzzleProgress.Length; i++)
         {
-            Debug.Log("Yeap");
+            for (int j = 0; j < currentPuzzleProgress[i].Length; j++)
+            {
+                if (currentPuzzleProgress[i][j] != levelData.PuzzleTemplate[i][j])
+                {
+                    return;
+                }
+            }
         }
+        Debug.Log("PuzzleComplete");
     }
 }
