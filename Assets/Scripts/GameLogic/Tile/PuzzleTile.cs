@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class PuzzleTile : BaseTile
 {
     public delegate void TileStateHandler(int row, int column);
