@@ -17,9 +17,9 @@ public class TouchHandler : MonoBehaviour
                 if (hittedByRayCast == null) return;
                 foreach (var gameObject in hittedByRayCast)
                 {
-                    if (gameObject.transform.GetComponent<PartBody>())
+                    if (gameObject.transform.gameObject.layer == 3)//PartTile
                     {
-                        grabbedPuzzlePart = gameObject.transform;
+                        grabbedPuzzlePart = gameObject.transform.parent;
                         grabbedPuzzlePart.localScale = puzzleAreaTransform.localScale;
                         grabbedPuzzlePart.GetComponent<PartBody>().SwitchStatOfChildTilesRigidBodies();
                         return;

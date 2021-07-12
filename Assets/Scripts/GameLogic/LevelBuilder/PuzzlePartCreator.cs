@@ -48,7 +48,6 @@ public class PuzzlePartCreator : MonoBehaviour
 
         partBody.AddComponent<PartBody>();
         partBody.GetComponent<RectTransform>().sizeDelta = puzzlePartSize;
-        partBody.GetComponent<BoxCollider2D>().size = puzzlePartSize;
         partBody.transform.SetParent(partContainer.transform, false);
 
         return partBody;
