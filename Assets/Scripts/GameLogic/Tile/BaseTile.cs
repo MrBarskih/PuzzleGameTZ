@@ -12,11 +12,7 @@ public class BaseTile : MonoBehaviour
     {
         boxCollider2DCompanent = GetComponent<BoxCollider2D>();
         imageCompanent = GetComponent<Image>();
-    }
 
-    protected void Start()
-    {
-        boxCollider2DCompanent.size = new Vector2(50, 50);
         boxCollider2DCompanent.isTrigger = true;
     }
 }
