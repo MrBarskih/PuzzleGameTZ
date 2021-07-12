@@ -16,7 +16,7 @@ public class PartBody : MonoBehaviour
         GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
     }
 
-    public void SwitchStatOfChildTilesRigidBodies() {
+    public void SwitchStateOfRigidBodiesInChildTiles() {
         foreach (var partTileRigidBody in childTilesCollider2DComponents) 
         {
             partTileRigidBody.enabled = !partTileRigidBody.enabled;

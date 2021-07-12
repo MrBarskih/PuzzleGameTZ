@@ -21,7 +21,7 @@ public class TouchHandler : MonoBehaviour
                     {
                         grabbedPuzzlePart = gameObject.transform.parent;
                         grabbedPuzzlePart.localScale = puzzleAreaTransform.localScale;
-                        grabbedPuzzlePart.GetComponent<PartBody>().SwitchStatOfChildTilesRigidBodies();
+                        grabbedPuzzlePart.GetComponent<PartBody>().SwitchStateOfRigidBodiesInChildTiles();
                         return;
                     }
                 }
@@ -41,7 +41,7 @@ public class TouchHandler : MonoBehaviour
                 {
                     //grabbedPuzzlePart.localScale = new Vector3(1f, 1f);
                     //grabbedPuzzlePart.GetComponent<PartBody>().ReturnToStartPosition();
-                    grabbedPuzzlePart.GetComponent<PartBody>().SwitchStatOfChildTilesRigidBodies();
+                    grabbedPuzzlePart.GetComponent<PartBody>().SwitchStateOfRigidBodiesInChildTiles();
                     grabbedPuzzlePart = null;
                 }
             }
