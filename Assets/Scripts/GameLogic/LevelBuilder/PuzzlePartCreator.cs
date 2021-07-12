@@ -5,9 +5,9 @@ using UnityEngine;
 //PuzzlePart->(PuzzlePartBody + PuzzlePartTiles)
 public class PuzzlePartCreator : MonoBehaviour
 {
+    [SerializeField] private LevelDataFromJson levelData;
     [SerializeField] private GameObject idleTilePrefab;
     [SerializeField] private GameObject partTilePrefab;
-    [SerializeField] private LevelDataFromJson levelData;
     [SerializeField] private List<GameObject> puzzlePartContainers = new List<GameObject>();
 
     private void Start()

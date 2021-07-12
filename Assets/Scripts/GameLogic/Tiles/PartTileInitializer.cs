@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PartTile : MonoBehaviour
+public class PartTileInitializer : MonoBehaviour
 {
     private void Awake()
     {

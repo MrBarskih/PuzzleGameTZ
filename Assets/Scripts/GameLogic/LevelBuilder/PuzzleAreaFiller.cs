@@ -20,7 +20,7 @@ public class PuzzleAreaFiller : MonoBehaviour
                     
                     if (puzzleTemplate[i][j])
                     {
-                        var puzzleTileComponent = Instantiate(puzzleTile, puzzleArea.transform).GetComponent<PuzzleTile>();
+                        var puzzleTileComponent = Instantiate(puzzleTile, puzzleArea.transform).GetComponent<PuzzleTileInitializer>();
                         puzzleTileComponent.puzzleAreaColumnPosition = j;
                         puzzleTileComponent.puzzleAreaRowPosition = i;
                     }

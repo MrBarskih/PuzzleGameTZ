@@ -17,7 +17,7 @@ public class PuzzleAreaObserver : MonoBehaviour
         }
         for (int i = 0; i < gameObject.transform.childCount; i++) 
         {
-            var puzzleTileComponent = gameObject.transform.GetChild(i).GetComponent<PuzzleTile>();
+            var puzzleTileComponent = gameObject.transform.GetChild(i).GetComponent<PuzzleTileInitializer>();
             if (puzzleTileComponent != null)
             {
                 puzzleTileComponent.PartTileOnMe += SetTrue;
@@ -31,7 +31,7 @@ public class PuzzleAreaObserver : MonoBehaviour
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
 
-            var puzzleTileComponent = gameObject.transform.GetChild(i).GetComponent<PuzzleTile>();
+            var puzzleTileComponent = gameObject.transform.GetChild(i).GetComponent<PuzzleTileInitializer>();
             if (puzzleTileComponent != null)
             {
                 puzzleTileComponent.PartTileOnMe -= SetTrue;

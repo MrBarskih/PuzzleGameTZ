@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PuzzleTile : MonoBehaviour
+public class PuzzleTileInitializer : MonoBehaviour
 {
     public delegate void TileStateHandler(int row, int column);
     public event TileStateHandler PartTileOnMe;
@@ -10,13 +10,13 @@ public class PuzzleTile : MonoBehaviour
     public int puzzleAreaColumnPosition;
 
     private Collider2D hostOfTheTile;
-    private bool amIFree = true;
+    private bool IsFree = true;
 
     private void OnTriggerEnter2D(Collider2D partTile)
     {
-        if (amIFree)
+        if (IsFree)
         {
-            amIFree = false;
+            IsFree = false;
             hostOfTheTile = partTile;
             PartTileOnMe?.Invoke(puzzleAreaRowPosition, puzzleAreaColumnPosition);
         }
@@ -26,7 +26,7 @@ public class PuzzleTile : MonoBehaviour
     {
         if (hostOfTheTile == partTile)
         {
-            amIFree = true;
+            IsFree = true;
             ImFree?.Invoke(puzzleAreaRowPosition, puzzleAreaColumnPosition);
         }
     }
