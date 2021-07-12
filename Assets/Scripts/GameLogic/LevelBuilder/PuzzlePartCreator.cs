@@ -5,7 +5,8 @@ using UnityEngine;
 //PuzzlePart->(PuzzlePartBody + PuzzlePartTiles)
 public class PuzzlePartCreator : MonoBehaviour
 {
-    [SerializeField] private GameObject idleTile;
+    [SerializeField] private GameObject idleTilePrefab;
+    [SerializeField] private GameObject partTilePrefab;
     [SerializeField] private LevelDataFromJson levelData;
     [SerializeField] private List<GameObject> puzzlePartContainers = new List<GameObject>();
 
@@ -32,9 +33,8 @@ public class PuzzlePartCreator : MonoBehaviour
             {
                 if (puzzlePartTemplate[i][j])
                 {
-                    var tile = Instantiate(idleTile, puzzlePartBody.transform);
-                    tile.AddComponent<PartTile>();
-                    tile.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 + (100 * j), -50 - (100 * i));
+                    var partTile = Instantiate(partTilePrefab, puzzlePartBody.transform);
+                    partTile.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 + (100 * j), -50 - (100 * i));
                 }
             }
         }

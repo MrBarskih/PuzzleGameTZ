@@ -5,6 +5,7 @@ public class PuzzleAreaFiller : MonoBehaviour
     [SerializeField] private LevelDataFromJson levelData;
     [SerializeField] private GameObject puzzleArea;
     [SerializeField] private GameObject idleTile;
+    [SerializeField] private GameObject puzzleTile;
 
     private void Start()
     {
@@ -16,12 +17,16 @@ public class PuzzleAreaFiller : MonoBehaviour
             {
                 for (int j = 0; j < puzzleTemplate[i].Length; j++)
                 {
-                    var currentTile = Instantiate(idleTile, puzzleArea.transform);
+                    
                     if (puzzleTemplate[i][j])
                     {
-                        var puzzleTileComponent = currentTile.AddComponent<PuzzleTile>();
+                        var puzzleTileComponent = Instantiate(puzzleTile, puzzleArea.transform).GetComponent<PuzzleTile>();
                         puzzleTileComponent.puzzleAreaColumnPosition = j;
                         puzzleTileComponent.puzzleAreaRowPosition = i;
+                    }
+                    else
+                    {
+                        Instantiate(idleTile, puzzleArea.transform);
                     }
                 }
             }

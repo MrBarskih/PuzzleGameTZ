@@ -568,7 +568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
   puzzleArea: {fileID: 306382087}
-  idleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
+  idleTile: {fileID: 3709415094037430823, guid: e6b5835a1ce14d0408b0a5b3787fbf5b, type: 3}
+  puzzleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
 --- !u!114 &210554104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae0afb0e918e744aae5d0dbd9f26589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleTile: {fileID: 3709415094037430823, guid: 08f66d85a8e33804588e8b8a20579fbd, type: 3}
+  idleTilePrefab: {fileID: 3709415094037430823, guid: e6b5835a1ce14d0408b0a5b3787fbf5b, type: 3}
+  partTilePrefab: {fileID: 3709415094037430823, guid: 9b1fc71b5e8f00842b121d9026710f6a, type: 3}
   levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
   puzzlePartContainers:
   - {fileID: 201929492}
