@@ -13,15 +13,17 @@ public class TouchHandler : MonoBehaviour
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
+                //Try to find objects under a touch
                 hittedByRayCast = Physics2D.RaycastAll(Input.GetTouch(0).position, Vector2.zero);
                 if (hittedByRayCast == null) return;
+
+                //Find and mark object for dragging
                 foreach (var gameObject in hittedByRayCast)
                 {
                     if (gameObject.transform.gameObject.layer == 3)//PartTile
                     {
                         grabbedPuzzlePart = gameObject.transform.parent;
                         grabbedPuzzlePart.localScale = puzzleAreaTransform.localScale;
-                        grabbedPuzzlePart.GetComponent<PartBody>().SwitchStateOfRigidBodiesInChildTiles();
                         return;
                     }
                 }
@@ -39,9 +41,7 @@ public class TouchHandler : MonoBehaviour
             {
                 if (grabbedPuzzlePart)
                 {
-                    //grabbedPuzzlePart.localScale = new Vector3(1f, 1f);
-                    //grabbedPuzzlePart.GetComponent<PartBody>().ReturnToStartPosition();
-                    grabbedPuzzlePart.GetComponent<PartBody>().SwitchStateOfRigidBodiesInChildTiles();
+                    grabbedPuzzlePart.GetComponent<PartBodyMagnet>().TryToMagnetize();
                     grabbedPuzzlePart = null;
                 }
             }

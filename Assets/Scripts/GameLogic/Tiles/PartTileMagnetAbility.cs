@@ -1,34 +1,45 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PartTileMagnetAbility : MonoBehaviour
 {
-    public bool IsAbleToMagnetize { get; set; }
-    private Collider2D targetForMagnetize;
+    public bool IsAbleToMagnetize;
+
+    private PuzzleTile target;
+    private Transform targetTransformForMagnetize;
 
     public void MagnetizeToPuzzleTile()
     {
-        gameObject.transform.position = targetForMagnetize.transform.position;
-        targetForMagnetize.GetComponent<PuzzleTileInitializer>().IsFree = false;
-        targetForMagnetize.GetComponent<PuzzleTileInitializer>().InvokePartTileOnMe();
+        gameObject.transform.position = targetTransformForMagnetize.transform.position;
+        target.IsFree = false;
+        target.InvokePartTileOnMeEvent();
     }
 
-    private void OnTriggerEnter2D(Collider2D puzzleTile)
+    private void OnTriggerEnter2D(Collider2D puzzleTileCollider)
     {
-        if (puzzleTile.transform.GetComponent<PuzzleTileInitializer>().IsFree)
+        if (puzzleTileCollider.TryGetComponent(out target))
         {
-            IsAbleToMagnetize = true;
-            targetForMagnetize = puzzleTile;
+            if (target.IsFree)
+            {
+                IsAbleToMagnetize = true;
+                targetTransformForMagnetize = target.transform;
+            }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D puzzleTile) {
-        if (puzzleTile == targetForMagnetize) {
+    private void OnTriggerExit2D(Collider2D puzzleTileCollider) 
+    {
+        if (puzzleTileCollider.transform == targetTransformForMagnetize) 
+        {
             IsAbleToMagnetize = false;
-            puzzleTile.GetComponent<PuzzleTileInitializer>().IsFree = true;
-            puzzleTile.GetComponent<PuzzleTileInitializer>().InvokeImFree();
+            target.IsFree = true;
+            target.InvokeImFreeEvent();
         }
     }
 
-    
+    private void Awake()
+    {
+        gameObject.transform.parent.GetComponent<PartBodyMagnet>().ChildTilesMagnetAbilityComponents.Add(this);
+    }
 }
