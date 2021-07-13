@@ -46,7 +46,7 @@ public class PuzzlePartCreator : MonoBehaviour
 
         Vector2 puzzlePartSize = new Vector2(puzzlePartTemplate[0].Length * 100, puzzlePartTemplate.Length * 100);
 
-        partBody.AddComponent<PartBody>();
+        partBody.AddComponent<PartBodyMagnet>();
         partBody.GetComponent<RectTransform>().sizeDelta = puzzlePartSize;
         partBody.transform.SetParent(partContainer.transform, false);
 
