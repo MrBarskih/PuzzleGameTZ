@@ -6,6 +6,9 @@ public class PuzzleAreaObserver : MonoBehaviour
 {
     [SerializeField] private LevelDataFromJson levelData;
 
+    public delegate void WinConditionHandler();
+    public event WinConditionHandler LevelIsComplited;
+
     private bool[][] currentPuzzleProgress;
 
     private void Start()
@@ -63,6 +66,7 @@ public class PuzzleAreaObserver : MonoBehaviour
                 }
             }
         }
-        Debug.Log("PuzzleComplete");
+
+        LevelIsComplited?.Invoke();
     }
 }
