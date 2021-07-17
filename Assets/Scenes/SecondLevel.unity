@@ -857,6 +857,7 @@ GameObject:
   - component: {fileID: 593420443}
   - component: {fileID: 593420442}
   - component: {fileID: 593420445}
+  - component: {fileID: 593420446}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -981,6 +982,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
+--- !u!114 &593420446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593420440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2abe409a5b1b54086b1a13e1168c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevelButton: {fileID: 593420442}
 --- !u!1 &599837761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769768341}
   m_Layer: 5
-  m_Name: LevelName
+  m_Name: LevelTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1368,7 +1382,6 @@ GameObject:
   - component: {fileID: 1022313958}
   - component: {fileID: 1022313960}
   - component: {fileID: 1022313959}
-  - component: {fileID: 1022313961}
   - component: {fileID: 1022313962}
   - component: {fileID: 1022313963}
   m_Layer: 5
@@ -1427,22 +1440,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &1022313961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022313957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f168816a90d6a4c97b635b3039807f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleAreaObserver: {fileID: 306382093}
-  puzzleArea: {fileID: 306382087}
-  winConditionWindow: {fileID: 1022313957}
-  puzzleParts: []
 --- !u!114 &1022313962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1970,6 +1967,9 @@ MonoBehaviour:
   - {fileID: 1326675245}
   - {fileID: 87286039}
   - {fileID: 861450911}
+  headerTitle: {fileID: 1202935938}
+  winConditionWindowTitle: {fileID: 757924026}
+  levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
 --- !u!1 &1797618805
 GameObject:
   m_ObjectHideFlags: 0
