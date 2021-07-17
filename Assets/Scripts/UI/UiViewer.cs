@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UiViewer : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class UiViewer : MonoBehaviour
     [SerializeField] private GameObject puzzleArea;
     [SerializeField] private GameObject winConditionWindow;
     [SerializeField] private List<GameObject> puzzleParts = new List<GameObject>();
+    [SerializeField] private TextMeshProUGUI headerTitle;
+    [SerializeField] private TextMeshProUGUI winConditionWindowTitle;
+    [SerializeField] private LevelDataFromJson levelData;
 
     private void Awake()
     {
@@ -20,6 +24,34 @@ public class UiViewer : MonoBehaviour
         else
         {
             throw new UnityException("PuzzleAreaObserver is equal null");
+        }   
+    }
+
+    private void Start()
+    {
+        if (levelData.LevelName != null && levelData != null)
+        {
+            if (winConditionWindowTitle != null)
+            {
+                winConditionWindowTitle.text = $"{levelData.LevelName} is complited!";
+            }
+            else
+            {
+                throw new UnityException("WinConditionWindowTitle is equal null");
+            }
+
+            if (headerTitle != null)
+            {
+                headerTitle.text = $"{levelData.LevelName}";
+            }
+            else
+            {
+                throw new UnityException("HeaderTitle is equal null");
+            }
+        }
+        else
+        {
+            throw new UnityException("levelData.LevelName is equal null");
         }
     }
 
