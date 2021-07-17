@@ -8,6 +8,6 @@ public class BackButton : MonoBehaviour
 
     private void Start()
     {
-        backButtonCompanent.onClick.AddListener(() => SceneManager.LoadScene($"{AllScenes.StartScene}"));
+        backButtonCompanent.onClick.AddListener(() => SceneManager.LoadScene($"{AllScenes.Start}"));
     }
 }
