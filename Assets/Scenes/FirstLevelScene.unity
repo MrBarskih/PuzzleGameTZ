@@ -1965,7 +1965,11 @@ MonoBehaviour:
   puzzleAreaObserver: {fileID: 306382093}
   puzzleArea: {fileID: 306382087}
   winConditionWindow: {fileID: 1022313957}
-  puzzleParts: []
+  puzzleParts:
+  - {fileID: 201929492}
+  - {fileID: 1326675245}
+  - {fileID: 87286039}
+  - {fileID: 861450911}
 --- !u!1 &1797618805
 GameObject:
   m_ObjectHideFlags: 0
