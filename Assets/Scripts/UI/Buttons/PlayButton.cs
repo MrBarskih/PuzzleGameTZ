@@ -6,7 +6,7 @@ public class PlayButton : MonoBehaviour
 {
     private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(()=>SceneManager.LoadScene($"{AllScenes.FirstLevelScene}"));
+        GetComponent<Button>().onClick.AddListener(()=>SceneManager.LoadScene($"{AllScenes.FirstLevel}"));
     }
 
 }
