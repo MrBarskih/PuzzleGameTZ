@@ -26,6 +26,7 @@ public class PuzzlePartCreator : MonoBehaviour
     private void CreatePuzzlePart(bool[][] puzzlePartTemplate, GameObject puzzlePartContainer)
     {
         var puzzlePartBody = CreatePuzzlePartBody(puzzlePartContainer, puzzlePartTemplate);
+        var puzzlePartBodyMagnetComponent = puzzlePartBody.GetComponent<PartBodyMagnet>();
 
         for (int i = 0; i < puzzlePartTemplate.Length; i++)
         {
@@ -34,6 +35,7 @@ public class PuzzlePartCreator : MonoBehaviour
                 if (puzzlePartTemplate[i][j])
                 {
                     var partTile = Instantiate(partTilePrefab, puzzlePartBody.transform);
+                    puzzlePartBodyMagnetComponent.ChildTilesMagnetAbilityComponents.Add(partTile.GetComponent<PartTileMagnetAbility>());
                     partTile.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 + (100 * j), -50 - (100 * i));
                 }
             }

@@ -6,40 +6,37 @@ public class PartTileMagnetAbility : MonoBehaviour
 {
     public bool IsAbleToMagnetize;
 
-    private PuzzleTile target;
-    private Transform targetTransformForMagnetize;
-
-    public void MagnetizeToPuzzleTile()
-    {
-        gameObject.transform.position = targetTransformForMagnetize.transform.position;
-        target.IsFree = false;
-        target.InvokePartTileOnMeEvent();
-    }
+    private PuzzleTile puzzleTile;
+    private Transform puzzleTileTransformForMagnetize;
 
     private void OnTriggerEnter2D(Collider2D puzzleTileCollider)
     {
-        if (puzzleTileCollider.TryGetComponent(out target))
+        if (puzzleTileCollider.TryGetComponent(out puzzleTile))
         {
-            if (target.IsFree)
+            if (puzzleTile.IsFree)
             {
                 IsAbleToMagnetize = true;
-                targetTransformForMagnetize = target.transform;
+                puzzleTileTransformForMagnetize = puzzleTile.transform;
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D puzzleTileCollider) 
     {
-        if (puzzleTileCollider.transform == targetTransformForMagnetize) 
+        if (puzzleTileCollider.transform == puzzleTileTransformForMagnetize) 
         {
             IsAbleToMagnetize = false;
-            target.IsFree = true;
-            target.InvokeImFreeEvent();
+            puzzleTile.IsFree = true;
+            puzzleTile.InvokeImFreeEvent();
         }
     }
 
-    private void Awake()
+    public void MagnetizeToPuzzleTile()
     {
-        gameObject.transform.parent.GetComponent<PartBodyMagnet>().ChildTilesMagnetAbilityComponents.Add(this);
+        gameObject.transform.position = puzzleTileTransformForMagnetize.transform.position;
+        puzzleTile.IsFree = false;
+        puzzleTile.InvokePartTileOnMeEvent();
     }
+
+
 }
