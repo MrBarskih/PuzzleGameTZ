@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PuzzleAreaObserver : MonoBehaviour
 {
-    [SerializeField] private LevelDataFromJson levelData;
-
     public delegate void WinConditionHandler();
     public event WinConditionHandler LevelIsComplited;
 
+    [SerializeField] private LevelDataFromJson levelData;
     private bool[][] currentPuzzleProgress;
 
     private void Start()
@@ -18,6 +17,7 @@ public class PuzzleAreaObserver : MonoBehaviour
         {
             currentPuzzleProgress[i] = new bool[levelData.PuzzleTemplate[0].Length];
         }
+
         for (int i = 0; i < gameObject.transform.childCount; i++) 
         {
             var puzzleTileComponent = gameObject.transform.GetChild(i).GetComponent<PuzzleTile>();
@@ -33,7 +33,6 @@ public class PuzzleAreaObserver : MonoBehaviour
     {
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-
             var puzzleTileComponent = gameObject.transform.GetChild(i).GetComponent<PuzzleTile>();
             if (puzzleTileComponent != null)
             {
