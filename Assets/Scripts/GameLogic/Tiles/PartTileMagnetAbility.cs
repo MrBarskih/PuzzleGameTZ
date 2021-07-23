@@ -4,39 +4,39 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PartTileMagnetAbility : MonoBehaviour
 {
-    public bool IsAbleToMagnetize;
+    public  bool        IsAbleToMagnetize;
+    public  Transform   puzzleTileTransformForMagnetize;
 
-    private PuzzleTile puzzleTile;
-    private Transform puzzleTileTransformForMagnetize;
+    private PuzzleTile  targetTile;
+    private bool        isLanded = false;
 
     private void OnTriggerEnter2D(Collider2D puzzleTileCollider)
     {
-        if (puzzleTileCollider.TryGetComponent(out puzzleTile))
+        if (puzzleTileCollider.TryGetComponent(out targetTile))
         {
-            if (puzzleTile.IsFree)
+            if (targetTile.IsFree)
             {
                 IsAbleToMagnetize = true;
-                puzzleTileTransformForMagnetize = puzzleTile.transform;
+                puzzleTileTransformForMagnetize = targetTile.transform;
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D puzzleTileCollider) 
     {
-        if (puzzleTileCollider.transform == puzzleTileTransformForMagnetize) 
+        if (isLanded)
         {
             IsAbleToMagnetize = false;
-            puzzleTile.IsFree = true;
-            puzzleTile.InvokeImFreeEvent();
-        }
+            targetTile.IsFree = true;
+            targetTile.InvokeImFreeEvent();
+            isLanded = false;
+        }  
     }
 
     public void MagnetizeToPuzzleTile()
     {
-        gameObject.transform.position = puzzleTileTransformForMagnetize.transform.position;
-        puzzleTile.IsFree = false;
-        puzzleTile.InvokePartTileOnMeEvent();
+        targetTile.IsFree = false;
+        targetTile.InvokePartTileOnMeEvent();
+        isLanded = true;
     }
-
-
 }
