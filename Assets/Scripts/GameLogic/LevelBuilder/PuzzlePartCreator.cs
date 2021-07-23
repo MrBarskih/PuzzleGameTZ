@@ -6,8 +6,11 @@ using UnityEngine;
 public class PuzzlePartCreator : MonoBehaviour
 {
     [SerializeField] private LevelDataFromJson levelData;
+
+    [Header("Tiles")]
     [SerializeField] private GameObject idleTilePrefab;
     [SerializeField] private GameObject partTilePrefab;
+
     [SerializeField] private List<GameObject> puzzlePartContainers = new List<GameObject>();
 
     private void Start()
@@ -26,8 +29,23 @@ public class PuzzlePartCreator : MonoBehaviour
     private void CreatePuzzlePart(bool[][] puzzlePartTemplate, GameObject puzzlePartContainer)
     {
         var puzzlePartBody = CreatePuzzlePartBody(puzzlePartContainer, puzzlePartTemplate);
-        var puzzlePartBodyMagnetComponent = puzzlePartBody.GetComponent<PartBodyMagnet>();
+        InsertPartTiles(puzzlePartTemplate, puzzlePartBody);
+    }
 
+    private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[][] puzzlePartTemplate)
+    {
+        GameObject partBody = new GameObject("partBody");
+
+        float width = puzzlePartTemplate[0].Length * 100;
+        float height = puzzlePartTemplate.Length * 100;
+
+        PartBodyInitializer.CreateComponent(partBody, partContainer.transform, height, width);
+
+        return partBody;
+    }
+
+    private void InsertPartTiles(bool[][] puzzlePartTemplate, GameObject puzzlePartBody)
+    {
         for (int i = 0; i < puzzlePartTemplate.Length; i++)
         {
             for (int j = 0; j < puzzlePartTemplate[i].Length; j++)
@@ -35,23 +53,12 @@ public class PuzzlePartCreator : MonoBehaviour
                 if (puzzlePartTemplate[i][j])
                 {
                     var partTile = Instantiate(partTilePrefab, puzzlePartBody.transform);
-                    puzzlePartBodyMagnetComponent.ChildTilesMagnetAbilityComponents.Add(partTile.GetComponent<PartTileMagnetAbility>());
                     partTile.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 + (100 * j), -50 - (100 * i));
+
+                    var puzzlePartBodyMagnetComponent = puzzlePartBody.GetComponent<PartBodyMagnet>();
+                    puzzlePartBodyMagnetComponent.ChildTilesMagnet.Add(partTile.GetComponent<PartTileMagnetAbility>());
                 }
             }
         }
-    }
-
-    private GameObject CreatePuzzlePartBody(GameObject partContainer, bool[][] puzzlePartTemplate)
-    {
-        GameObject partBody = new GameObject("partBody");
-
-        Vector2 puzzlePartSize = new Vector2(puzzlePartTemplate[0].Length * 100, puzzlePartTemplate.Length * 100);
-
-        partBody.AddComponent<PartBodyMagnet>();
-        partBody.GetComponent<RectTransform>().sizeDelta = puzzlePartSize;
-        partBody.transform.SetParent(partContainer.transform, false);
-
-        return partBody;
     }
 }
