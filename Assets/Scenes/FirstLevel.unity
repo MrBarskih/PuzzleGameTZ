@@ -585,7 +585,6 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
   idleTilePrefab: {fileID: 3709415094037430823, guid: e6b5835a1ce14d0408b0a5b3787fbf5b, type: 3}
   partTilePrefab: {fileID: 3709415094037430823, guid: 9b1fc71b5e8f00842b121d9026710f6a, type: 3}
-  uiAdapter: {fileID: 875872574}
   puzzlePartContainers:
   - {fileID: 201929492}
   - {fileID: 1326675245}
@@ -1372,7 +1371,6 @@ MonoBehaviour:
   landscapeMatchWidthOrHeight: 1
   portraitPuzzleAreaLocalScale: {x: 1.5, y: 1.5}
   landscapePuzzleAreaLocalScale: {x: 1, y: 1}
-  PuzzleParts: []
 --- !u!1 &1022313957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,4 +2297,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleAreaObserver: {fileID: 306382093}
-  levelData: {fileID: 11400000, guid: a7531f3cdbdf14d4faeba08f277573d1, type: 2}
