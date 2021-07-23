@@ -1,6 +1,7 @@
 public enum AllScenes
 {
-   Start,
    FirstLevel,
-   SecondLevel
+   SecondLevel,
+   ThirdLevel,
+   Start
 }
