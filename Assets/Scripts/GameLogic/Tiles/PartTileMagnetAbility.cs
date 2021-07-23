@@ -1,45 +1,47 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PartTileMagnetAbility : MonoBehaviour
 {
-    public bool IsAbleToMagnetize;
+    public  bool        IsAbleToMagnetize;
+    public  Transform   puzzleTileTransformForMagnetize;
 
-    private PuzzleTile target;
-    private Transform targetTransformForMagnetize;
-
-    public void MagnetizeToPuzzleTile()
-    {
-        gameObject.transform.position = targetTransformForMagnetize.transform.position;
-        target.IsFree = false;
-        target.InvokePartTileOnMeEvent();
-    }
+    private PuzzleTile  targetTile;
+    private bool        isLanded = false;
 
     private void OnTriggerEnter2D(Collider2D puzzleTileCollider)
     {
-        if (puzzleTileCollider.TryGetComponent(out target))
+        if (puzzleTileCollider.TryGetComponent(out targetTile))
         {
-            if (target.IsFree)
+            if (targetTile.IsFree)
             {
                 IsAbleToMagnetize = true;
-                targetTransformForMagnetize = target.transform;
+                puzzleTileTransformForMagnetize = targetTile.transform;
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D puzzleTileCollider) 
     {
-        if (puzzleTileCollider.transform == targetTransformForMagnetize) 
+        if (isLanded)
         {
             IsAbleToMagnetize = false;
-            target.IsFree = true;
-            target.InvokeImFreeEvent();
+            targetTile.IsFree = true;
+            targetTile.InvokeImFreeEvent();
+            isLanded = false;
+        }
+
+        if (puzzleTileCollider.transform == puzzleTileTransformForMagnetize)
+        {
+            puzzleTileTransformForMagnetize = null;
+            IsAbleToMagnetize = false;
         }
     }
 
-    private void Awake()
+    public void MagnetizeToPuzzleTile()
     {
-        gameObject.transform.parent.GetComponent<PartBodyMagnet>().ChildTilesMagnetAbilityComponents.Add(this);
+        targetTile.IsFree = false;
+        targetTile.InvokePartTileOnMeEvent();
+        isLanded = true;
     }
 }
