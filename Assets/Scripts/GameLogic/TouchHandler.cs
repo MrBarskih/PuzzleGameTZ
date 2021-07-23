@@ -23,7 +23,7 @@ public class TouchHandler : MonoBehaviour
                     if (gameObject.transform.gameObject.layer == 3)//PartTile
                     {
                         grabbedPuzzlePart = gameObject.transform.parent;
-                        if (grabbedPuzzlePart != puzzleAreaTransform)
+                        if (grabbedPuzzlePart.transform.parent != puzzleAreaTransform)
                         {
                             grabbedPuzzlePart.localScale = puzzleAreaTransform.localScale;
                         }
