@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -30,7 +29,13 @@ public class PartTileMagnetAbility : MonoBehaviour
             targetTile.IsFree = true;
             targetTile.InvokeImFreeEvent();
             isLanded = false;
-        }  
+        }
+
+        if (puzzleTileCollider.transform == puzzleTileTransformForMagnetize)
+        {
+            puzzleTileTransformForMagnetize = null;
+            IsAbleToMagnetize = false;
+        }
     }
 
     public void MagnetizeToPuzzleTile()
