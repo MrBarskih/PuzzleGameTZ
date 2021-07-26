@@ -3,6 +3,8 @@ Hi, the project is one of technical test tasks from companies that created to fi
 The project service as an example of my **code state**, **project architecture**, **code architecture** at 07.26.2021.
 ![Image of the App](https://sun9-74.userapi.com/impg/ZjgsVEqetk85FFnFX5wCm51PhHO7Ba6xgxTMqg/DDYQvEoa53I.jpg?size=524x932&quality=96&sign=d0374083efd054ba0ec76b60a4e68838&type=album)
 
+<img align="left" width="100" height="100" src="http://www.fillmurray.com/100/100">
+
 There was realized the next features:
 * Supporting all popular phone resolutions(Adaptive UI);
 * Creating puzzle parts from Json file; 
@@ -14,8 +16,8 @@ There was realized the next features:
 * Comparing two arrays[][];
 * Using of c# events; 
 
-Puzzle part. ![Image of puzzle part](https://sun9-60.userapi.com/impg/kkmfOWdUgBtyGX0G9kmClwill3YmbfP_1QwF6Q/dueuyWlI9R4.jpg?size=64x64&quality=96&sign=c62a88dec5896c35fecab6d199faccbf&type=album)  
- Puzzle area.![Imgae of puzzle area](https://sun9-51.userapi.com/impg/pchVqglwxTYtR9fSOpJSQ8_GgyK39ybTt0IuhQ/ggP6z48gulQ.jpg?size=188x194&quality=96&sign=a6ef52402844ee2477580ae99bf8265a&type=album)
+Puzzle part -> ![Image of puzzle part](https://sun9-60.userapi.com/impg/kkmfOWdUgBtyGX0G9kmClwill3YmbfP_1QwF6Q/dueuyWlI9R4.jpg?size=64x64&quality=96&sign=c62a88dec5896c35fecab6d199faccbf&type=album)  
+ Puzzle area -> ![Imgae of puzzle area](https://sun9-51.userapi.com/impg/pchVqglwxTYtR9fSOpJSQ8_GgyK39ybTt0IuhQ/ggP6z48gulQ.jpg?size=188x194&quality=96&sign=a6ef52402844ee2477580ae99bf8265a&type=album)
 
 P.s. 
 > There is the [apk](https://github.com/MrBarskih/PuzzleGameTZ/tree/Development/Apk) file at Apk folder with the final build of the project.
