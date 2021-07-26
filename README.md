@@ -5,7 +5,7 @@ The project service as an example of my **code state**, **project architecture**
 
 There was realized the next features:
 * Supporting all popular phone resolutions(Adaptive UI);
-* Creating puzzle parts from Json file;
+* Creating puzzle parts from Json file; ![Image of puzzle part](https://sun9-49.userapi.com/impg/KtIAIaYwDEdzKHG7Z745cQBoZFUu3G96epMdZA/noTcBebYWdQ.jpg?size=87x98&quality=96&sign=5a8f7eebe57ba7384ce52034629c5be4&type=album)
 * Creating puzzle area from Json file;
 * Saving level progress by PlayerPrefs;
 * Using scriptable object for keeping level data;
