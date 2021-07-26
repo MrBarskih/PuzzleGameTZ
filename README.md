@@ -23,3 +23,6 @@ Puzzle part -> ![Image of puzzle part](https://sun9-60.userapi.com/impg/kkmfOWdU
 
 P.s. 
 > There is the [apk](https://github.com/MrBarskih/PuzzleGameTZ/tree/Development/Apk) file at Apk folder with the final build of the project.
+
+P.s.s.
+>  The technical test task was completed with 100% accuracy with documentation. Almost all mechanics were described at TT.
