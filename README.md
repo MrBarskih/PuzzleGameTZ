@@ -2,7 +2,7 @@
 Hi, the project is one of technical test tasks from companies that created to find out my technical skills at **C# and Unity**.
 The project service as an example of my **code state**, **project architecture**, **code architecture** at 07.26.2021.
 <p align="center">
-  <img  width="200" height="400" src="https://sun9-74.userapi.com/impg/ZjgsVEqetk85FFnFX5wCm51PhHO7Ba6xgxTMqg/DDYQvEoa53I.jpg?size=524x932&quality=96&sign=d0374083efd054ba0ec76b60a4e68838&type=album">
+  <img  width="230" height="400" src="https://sun9-74.userapi.com/impg/ZjgsVEqetk85FFnFX5wCm51PhHO7Ba6xgxTMqg/DDYQvEoa53I.jpg?size=524x932&quality=96&sign=d0374083efd054ba0ec76b60a4e68838&type=album">
  </p>
 
 There was realized the next features:
