@@ -11,3 +11,6 @@ There was realized the next features:
 7. Magnetize puzzle parts to puzzle area;
 8. Comparing two arrays[][];
 9. Usage of c# events; 
+
+P.s. 
+There is [apk](https://github.com/MrBarskih/PuzzleGameTZ/tree/Development/Apk) file at Apk folder with the final build of the project.
