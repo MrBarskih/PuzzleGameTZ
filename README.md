@@ -14,8 +14,8 @@ There was realized the next features:
 * Comparing two arrays[][];
 * Using of c# events; 
 
-Puzzle part. ![Image of puzzle part](https://sun9-60.userapi.com/impg/kkmfOWdUgBtyGX0G9kmClwill3YmbfP_1QwF6Q/dueuyWlI9R4.jpg?size=64x64&quality=96&sign=c62a88dec5896c35fecab6d199faccbf&type=album)\n
- Puzzle area.![Imgae of puzzle area](https://sun9-51.userapi.com/impg/pchVqglwxTYtR9fSOpJSQ8_GgyK39ybTt0IuhQ/ggP6z48gulQ.jpg?size=188x194&quality=96&sign=a6ef52402844ee2477580ae99bf8265a&type=album)\n
+Puzzle part. ![Image of puzzle part](https://sun9-60.userapi.com/impg/kkmfOWdUgBtyGX0G9kmClwill3YmbfP_1QwF6Q/dueuyWlI9R4.jpg?size=64x64&quality=96&sign=c62a88dec5896c35fecab6d199faccbf&type=album)  
+ Puzzle area.![Imgae of puzzle area](https://sun9-51.userapi.com/impg/pchVqglwxTYtR9fSOpJSQ8_GgyK39ybTt0IuhQ/ggP6z48gulQ.jpg?size=188x194&quality=96&sign=a6ef52402844ee2477580ae99bf8265a&type=album)
 
 P.s. 
 > There is the [apk](https://github.com/MrBarskih/PuzzleGameTZ/tree/Development/Apk) file at Apk folder with the final build of the project.
