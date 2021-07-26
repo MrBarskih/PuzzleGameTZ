@@ -1,7 +1,7 @@
 # PuzzleGameTZ
 Hi, the project is one of technical test tasks from companies that created to find out my technical skills at **C# and Unity**.
 The project service as an example of my **code state**, **project architecture**, **code architecture** at 07.26.2021.
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of Yaktocat](https://vk.com/im?sel=107184068)
 
 There was realized the next features:
 * Supporting all popular phone resolutions(Adaptive UI);
