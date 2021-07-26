@@ -5,7 +5,7 @@ The project service as an example of my **code state**, **project architecture**
   <img  width="230" height="400" src="https://sun9-74.userapi.com/impg/ZjgsVEqetk85FFnFX5wCm51PhHO7Ba6xgxTMqg/DDYQvEoa53I.jpg?size=524x932&quality=96&sign=d0374083efd054ba0ec76b60a4e68838&type=album">
  </p>
 
-There was realized the next features:
+There was realized next features:
 * Supporting all popular phone resolutions(Adaptive UI);
 * Creating puzzle parts from Json file; 
 * Creating puzzle area from Json file; 
